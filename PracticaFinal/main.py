@@ -14,14 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import os
+import jinja2
 import webapp2
-import datetime
-
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        nombre = self.request.get("edNombre", "Pobrecito hablador")
-        self.response.write('Hola ' + nombre + ', la fecha y la hora es: ' + str(datetime.datetime.now()))
-
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=["jinja2.ext.autoescape"],
+    autoescape=True)
+class SaluteHandler(webapp2.RequestHandler):
+    def load_input(self):
+        self.name = self.request.get("name", "anonymous")
+    def post(self):
+        self.load_input()
+        self.name = self.name[0].upper() + self.name[1:]
+        template_values = {
+            'name': self.name,
+        }
+        template = JINJA_ENVIRONMENT.get_template("answer.html")
+        self.response.write(template.render(template_values));
 app = webapp2.WSGIApplication([
-    ('/saluda', MainHandler)
+    ('/hi', SaluteHandler),
 ], debug=True)
