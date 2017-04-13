@@ -5,6 +5,20 @@
         <title>SaludaME</title>
     </head>
     <body>
-        <h1>Hola, {{name}}.</h1>
+        <p>
+            <h1>Hola, {{name|capitalize}}.</h1>
+            <form id="frmResult" style="background-color:lightgray">
+                <input type="button" onClick="javascript:history.go(-1);" value="<<">
+            </form>
+        </p>
+        <p>
+            {% if salutations.count() > 0 %}
+            <ul>
+                {% for salute in salutations %}
+                    <li>{{salute.time}}: {{salute.name}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </p>
     </body>
 </html>

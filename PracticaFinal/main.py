@@ -17,18 +17,30 @@
 import os
 import jinja2
 import webapp2
+from google.appengine.ext import ndb
+
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=["jinja2.ext.autoescape"],
     autoescape=True)
+
+class Salute(ndb.Model):
+    name = ndb.StringProperty(required = True)
+    time = ndb.DateTimeProperty(auto_now_add = True)
+
+
 class SaluteHandler(webapp2.RequestHandler):
-    def load_input(self):
+    def get_input(self):
         self.name = self.request.get("name", "anonymous")
     def post(self):
-        self.load_input()
-        self.name = self.name[0].upper() + self.name[1:]
+        self.get_input()
+        salutations = Salute.query().order(Salute.time);
+        salute = Salute(name=self.name);
+        salute.put();
+
         template_values = {
             'name': self.name,
+            'salutations': salutations,
         }
         template = JINJA_ENVIRONMENT.get_template("answer.html")
         self.response.write(template.render(template_values));
