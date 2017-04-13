@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SaludaME!</title>
+    <script type="application/javascript">
+        function check() {
+            var toret = true;
+            var edNombre = document.getElementById("edNombre");
+            var dvError = document.getElementById( "dvError" );
+
+            dvError.style.display = "none";
+
+            if (edNombre.value.trim() == "") {
+
+                dvError.style.display = "block";
+                dvError.innerHTML = "ERROR: Nombre no válido"
+                toret = false;
+            }
+
+            return toret;
+        }
+    </script>
+</head>
+<body>
+    <form action="/saluda" onsubmit="javascript: return check()">
+        <label for="edNombre">Dame tu nombre:</label>
+        <input type="text" id="edNombre" name="edNombre">
+        <input type="submit" value="SaludaME">
+    </form>
+
+</body>
+</html>
