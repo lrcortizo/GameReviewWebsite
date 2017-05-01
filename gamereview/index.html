@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="style.css">
+	<title>Game Review</title>
+</head>
+<header>
+	<div id="title">
+		<p>Game Review</p>
+	</div>
+	<div class="headercontent">
+		<a href="{{access_link}}">{{user_name}}</a>
+	</div>
+</header>
+<body>
+	<div id="games">
+		{% for game in games %}
+			<div id="tblSeries">
+			<p align="right"><img src="{{game.picture}}"/></p>
+			<p>
+			<b><big>{{game.name}}</big></b> <i>({{game.date}})</i>
+			<br><a target="_blank" href="{{game.web}}">Web</a>
+			<br>{{game.comments}}
+			</p>
+			<a href="/modify?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="styled-button" src="/res/modify.svg"/></a>
+			<a href="/delete?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="styled-button" src="/res/delete.svg"/></a>
+			</div>
+			<br/>
+		{% endfor %}
+
+	</div>
+	<div id="dvActions">
+		<a href="/add"><img height="24px" width="24px" title="add" class="styled-button" src="/res/add.svg"/></a>
+	</input>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+header {
+  margin: 20px;
+  padding: 20px;
+  color: white;
+  background-color: blue;
+}
+
+#title{
+    position: relative;
+    font-size: 32px;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+.headercontent{
+    position: relative;
+}
+
+#dvActions {
+  margin: 20px;
+  padding: 10px;
+  background-color: black;
+  font-weight: bolder;
+  font-size: 16pt
+}
