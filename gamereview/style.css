@@ -16,10 +16,90 @@ header {
     position: relative;
 }
 
+#dvSeries {
+  margin: 20px;
+  padding: 20px;
+}
+
+#tblSeries {
+  background-color: lightgray;
+  font-size:18pt;
+}
+
+#dvTitle {
+  margin: 20px;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  font-size: 16pt
+}
+
+#dvError {
+  display: none;
+  color: white;
+  background-color: red;
+  margin: 20px;
+  padding: 10px;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
 #dvActions {
   margin: 20px;
   padding: 10px;
   background-color: black;
   font-weight: bolder;
   font-size: 16pt
+}
+
+#dvHeader {
+  margin: 20px;
+  padding: 20px;
+  font-size: 14px;
+  font-style: italic;
+  text-transform: capitalize;
+  color: white;
+  background-color: black;
+  font-size: 16pt
+}
+
+input.button {
+  background-color: black;
+  color: green
+}
+
+/* Hyperlinks */
+a {
+	color: green;
+	text-decoration:none;
+}
+
+a:hover {
+	color: darkgreen;
+	text-decoration:none
+}
+
+a:visited {
+	color: green;
+	text-decoration:none
+}
+
+/* Buttons */
+.styled-button {
+	background:#5CCD00;
+	background:-moz-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#5CCD00),color-stop(100%,#4AA400));
+	background:-webkit-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	background:-o-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	background:-ms-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	background:linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#5CCD00', endColorstr='#4AA400',GradientType=0);
+	padding:10px 15px;
+	color:#fff;
+	font-family:'Helvetica Neue',sans-serif;
+	font-size:16px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border:1px solid #459A00
 }

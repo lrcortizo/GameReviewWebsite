@@ -10,7 +10,12 @@
 		<p>Game Review</p>
 	</div>
 	<div class="headercontent">
-		<a href="{{access_link}}">{{user_name}}</a>
+		{{user_name}}
+		{% if user_name == "Please login" %}
+			<a href="{{access_link}}">Login</a>
+		{% else %}
+			<a href="{{access_link}}">Logout</a>
+		{% endif %}
 	</div>
 </header>
 <body>
@@ -21,10 +26,10 @@
 			<p>
 			<b><big>{{game.name}}</big></b> <i>({{game.date}})</i>
 			<br><a target="_blank" href="{{game.web}}">Web</a>
-			<br>{{game.comments}}
+			<br>
 			</p>
-			<a href="/modify?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="styled-button" src="/res/modify.svg"/></a>
-			<a href="/delete?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="styled-button" src="/res/delete.svg"/></a>
+			<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="styled-button" src="/res/modify.svg"/></a>
+			<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="styled-button" src="/res/delete.svg"/></a>
 			</div>
 			<br/>
 		{% endfor %}

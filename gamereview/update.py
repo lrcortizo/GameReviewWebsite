@@ -73,7 +73,7 @@ class UpdateHandler(webapp2.RequestHandler):
     		game.name = self.request.get("name").strip()
     		game.picture = self.request.get("picture").strip()
     		game.web = self.request.get("web").strip()
-    		game.company = self.request.get("comments").strip()
+    		game.company = self.request.get("company").strip()
 
     		if len(game.name) < 1:
 				self.redirect("/error?msg=" + "Modification aborted: serie's name is mandatory")

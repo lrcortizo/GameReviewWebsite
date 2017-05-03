@@ -21,6 +21,8 @@ import os
 from game import Game
 from add import AddHandler
 from update import UpdateHandler
+from error import ErrorHandler
+from remove import RemoveHandler
 from google.appengine.api import users
 
 
@@ -47,9 +49,10 @@ class MainHandler(webapp2.RequestHandler):
             games = Game.query(Game.user == user.user_id()).order(Game.date)
 
             template_values = {
-                    "user_name": user_name,
-                    "access_link": access_link,
-                    "games": games,
+                "user_name": user_name,
+                "access_link": access_link,
+                "games": games,
+
             }
 
 	template = JINJA_ENVIRONMENT.get_template( "index.html" )
@@ -59,4 +62,6 @@ app = webapp2.WSGIApplication([
     ("/", MainHandler),
     ("/add", AddHandler),
     ("/update", UpdateHandler),
+    ("/remove", RemoveHandler),
+    ("/error", ErrorHandler),
 ], debug=True)

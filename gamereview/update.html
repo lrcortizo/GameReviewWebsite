@@ -61,36 +61,30 @@
 	</p>
 </div>
 <div id="dvTitle">
-<p>Modificar serie</p>
+<p>Modificar juego</p>
 </div>
 <div id="dvSeries">
 <p>
 <form id="tblSeries"
 	onsubmit="javascript: return chk();"
-	action="/modify?id={{serie.key.urlsafe()}}" method="post">
+	action="/update?id={{game.key.urlsafe()}}" method="post">
 	<p>
 	Name: <input type="text" name="name" id="edName" size="80"
-			value="{{serie.name}}"
+			value="{{game.name}}"
  			style="border:none;background-color:lightgray"/>
 	<br>
-	Season: <input type="number" name="season" id="edSeason"
-			value="{{serie.lastEpisode // 1000}}"
- 			style="border:none;background-color:lightgray"/>
-	Episode: <input type="number" name="episode" id="edEpisode"
-			value="{{serie.lastEpisode % 1000}}"
+	Company: <input type="text" name="company" id="edCompany" size="80"
+			value="{{game.web}}"
  			style="border:none;background-color:lightgray"/>
 	<br>
 	Web: <input type="text" name="web" id="edWeb" size="80"
-			value="{{serie.web}}"
+			value="{{game.web}}"
  			style="border:none;background-color:lightgray"/>
-
-	<br>
+		<br>
 	Picture Url: <input type="text" name="picture" id="edPicture" size="80"
-			value="{{serie.picture}}"
+			value="{{game.picture}}"
  			style="border:none;background-color:lightgray"/>
 	<br>
-	Comments: <TextArea name="comments" id="edComments" rows="6" cols="80"
- 			style="border:none;background-color:lightgray">{{serie.comments}}</textarea>
 	<p>
 		<input type="image"
 			class="styled-button"

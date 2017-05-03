@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="style.css"/>
+	<title>Game Review</title>
+</head>
+<body>
+<div id="dvHeader">
+	<p>
+	<table width="100%">
+		<tr>
+			<td width="80%"><b>Logout</b> <a href="{{access_link}}">{{user_name}}</a></td>
+			<td width="20%">Game review</td>
+		</tr>
+	</table>
+	</p>
+</div>
+<div id="dvTitle">
+<p>Añadir juego</p>
+</div>
+<div id="dvSeries">
+<p>
+<form id="tblSeries"
+	action="/add?id={{game.key.urlsafe()}}" method="post">
+	<p>
+	Name: <input type="text" name="name" id="edName" size="80"
+ 			style="border:none;background-color:lightgray"/>
+	<br>
+    Company: <input type="text" name="company" id="edCompany" size="80"
+ 			style="border:none;background-color:lightgray"/>
+
+	<br>
+	Web: <input type="text" name="web" id="edWeb" size="80"
+ 			style="border:none;background-color:lightgray"/>
+
+	<br>
+	Picture Url: <input type="text" name="picture" id="edPicture" size="80"
+ 			style="border:none;background-color:lightgray"/>
+	<br>
+	<p>
+		<input type="image"
+			class="styled-button"
+		 	title="modify" alt="modify"
+			width="16px" height="16px" src="/res/modify.svg"/>
+	</p>
+</form>
+</div>
+<div id="dvError">
+</div>
+<div id="dvActions">
+	<a href="/main"><img width="24px" height="24px" alt="back" title="back" class="styled-button" src="/res/back.svg"/></a>
+</div>
+</body>
+</html>
