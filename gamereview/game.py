@@ -1,6 +1,7 @@
 from google.appengine.ext import ndb
 
 class Game(ndb.Model):
+	id = ndb.KeyProperty()
 	user = ndb.StringProperty(required = True)
 	name = ndb.StringProperty(required = True)
 	date = ndb.DateProperty(auto_now_add = True)

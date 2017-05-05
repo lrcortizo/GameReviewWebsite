@@ -46,7 +46,7 @@ class MainHandler(webapp2.RequestHandler):
         else:
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
-            games = Game.query(Game.user == user.user_id()).order(Game.date)
+            games = Game.query().order(Game.date)
 
             template_values = {
                 "user_name": user_name,
