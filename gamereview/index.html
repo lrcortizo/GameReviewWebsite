@@ -6,22 +6,32 @@
 	<title>Game Review</title>
 </head>
 <header>
-	<div id="title">
-		<p>Game Review</p>
+	<div class="headercontent">
+		<a  href="/"><img id="logo" src="./res/logo.png"></a>
 	</div>
 	<div class="headercontent">
-		{{user_name}}
+		<a id="indexlink" href="/">Game Review</a>
+	</div>
+	<div class="headercontent">
 		{% if user_name == "Please login" %}
 			<a href="{{access_link}}">Login</a>
 		{% else %}
-			<a href="{{access_link}}">Logout</a>
+			<div class="profile">
+				<ul id="nav">
+  	        		<div class="menu">{{user_name}}</br>▼
+                		<ul>
+							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
+              			</ul>
+  	        		</div>
+  	      		</ul>
+			</div>
 		{% endif %}
 	</div>
 </header>
 <body>
 	<div id="games">
 		{% for game in games %}
-			<div id="tblSeries">
+			<div id="game">
 			<p align="right"><img src="{{game.picture}}"/></p>
 			<p>
 			<b><big>{{game.name}}</big></b> <i>({{game.date}})</i>
