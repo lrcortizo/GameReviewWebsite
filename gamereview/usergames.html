@@ -19,7 +19,7 @@
 			<div class="profile">
 				<ul id="nav">
   	        		<div class="menu">{{user_name}}</br>▼
-                		<ul>
+                        <ul>
 							<div class="submenu"><a href="/usergames">My games</a></div>
 							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
               			</ul>
@@ -30,6 +30,9 @@
 	</div>
 </header>
 <body>
+	<div id="add">
+		<a href="/add"><img height="24px" width="24px" title="add" class="button" src="/res/add.svg"/></a>
+	</div>
 	<div class="games">
 		{% for game in games %}
 			<div class="game">
@@ -40,10 +43,8 @@
 					<a href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a><br>
 					{{game.date}}<br>
 					<a target="_blank" href="{{game.web}}">{{game.web}}</a><br>
-					{% if game.user == iduser %}
 					<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/res/update.svg"/></a>
 					<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/res/remove.svg"/></a>
-					{% endif %}
 				</div>
 			</div>
 			<br/>

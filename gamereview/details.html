@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="style.css">
+	<title>Game Review</title>
 </head>
+<header>
+	<div class="headercontent">
+		<a  href="/"><img id="logo" src="./res/logo.png"></a>
+	</div>
+	<div class="headercontent">
+		<a id="indexlink" href="/">Game Review</a>
+	</div>
+	<div class="headercontent">
+		{% if user_name == "Please login" %}
+			<a href="{{access_link}}">Login</a>
+		{% else %}
+			<div class="profile">
+				<ul id="nav">
+  	        		<div class="menu">{{user_name}}</br>▼
+						<ul>
+							<div class="submenu"><a href="/usergames">My games</a></div>
+							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
+              			</ul>
+  	        		</div>
+  	      		</ul>
+			</div>
+		{% endif %}
+	</div>
+</header>
 <body>
-
+<div class="title">
+<p class="tittletext">{{game.name}}</p>
+</div>
+<div class="gameform">
+	Name: </br>{{game.name}}
+	</br></br>
+	Company: </br>{{game.web}}
+    </br></br>
+	Web: </br>{{game.web}}
+    </br></br>
+	Picture Url: </br>{{game.picture}}
+	</br></br>
+</div>
 </body>
 </html>

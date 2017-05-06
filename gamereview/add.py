@@ -21,14 +21,9 @@ class AddHandler(webapp2.RequestHandler):
         if user != None:
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
-            game = Game()
-            game.name = "name"
-            game.user = user.user_id()
-            game.put()
             template_values = {
                 "user_name": user_name,
                 "access_link": access_link,
-                "game": game,
             }
 
             template = JINJA_ENVIRONMENT.get_template("add.html")
@@ -37,25 +32,13 @@ class AddHandler(webapp2.RequestHandler):
             self.redirect("/")
 
     def post(self):
-        try:
-            id = self.request.GET['id']
-        except:
-            id = None
-
-        if id == None:
-            self.redirect("/error?msg=missing id for modification")
-            return
-
         user = users.get_current_user()
 
         if user != None:
-            try:
-                game = ndb.Key(urlsafe=id).get()
-            except:
-                self.redirect("/error?msg=key does not exist")
-                return
-
+            game = Game()
+            game.id = game.key
             game.name = self.request.get("name").strip()
+            game.user = user.user_id()
             game.picture = self.request.get("picture").strip()
             game.web = self.request.get("web").strip()
             game.company = self.request.get("company").strip()

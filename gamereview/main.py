@@ -21,8 +21,10 @@ import os
 from game import Game
 from add import AddHandler
 from update import UpdateHandler
-from error import ErrorHandler
 from remove import RemoveHandler
+from details import DetailsHandler
+from usergames import UserGamesHandler
+from error import ErrorHandler
 from google.appengine.api import users
 
 
@@ -52,6 +54,7 @@ class MainHandler(webapp2.RequestHandler):
                 "user_name": user_name,
                 "access_link": access_link,
                 "games": games,
+                "iduser": user.user_id(),
 
             }
 
@@ -64,4 +67,6 @@ app = webapp2.WSGIApplication([
     ("/update", UpdateHandler),
     ("/remove", RemoveHandler),
     ("/error", ErrorHandler),
+    ("/details", DetailsHandler),
+    ("/usergames", UserGamesHandler),
 ], debug=True)

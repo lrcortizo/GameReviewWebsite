@@ -1,55 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="style.css">
 	<title>Game Review</title>
 </head>
+<header>
+	<div class="headercontent">
+		<a  href="/"><img id="logo" src="./res/logo.png"></a>
+	</div>
+	<div class="headercontent">
+		<a id="indexlink" href="/">Game Review</a>
+	</div>
+	<div class="headercontent">
+		{% if user_name == "Please login" %}
+			<a href="{{access_link}}">Login</a>
+		{% else %}
+			<div class="profile">
+				<ul id="nav">
+  	        		<div class="menu">{{user_name}}</br>▼
+						<ul>
+							<div class="submenu"><a href="/usergames">My games</a></div>
+							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
+              			</ul>
+  	        		</div>
+  	      		</ul>
+			</div>
+		{% endif %}
+	</div>
+</header>
 <body>
-<div id="dvHeader">
-	<p>
-	<table width="100%">
-		<tr>
-			<td width="80%"><b>Logout</b> <a href="{{access_link}}">{{user_name}}</a></td>
-			<td width="20%">Game review</td>
-		</tr>
-	</table>
-	</p>
-</div>
-<div id="dvTitle">
-<p>Añadir juego</p>
-</div>
-<div id="dvSeries">
-<p>
-<form id="tblSeries"
-	action="/add?id={{game.key.urlsafe()}}" method="post">
-	<p>
-	Name: <input type="text" name="name" id="edName" size="80"
- 			style="border:none;background-color:lightgray"/>
-	<br>
-    Company: <input type="text" name="company" id="edCompany" size="80"
- 			style="border:none;background-color:lightgray"/>
-
-	<br>
-	Web: <input type="text" name="web" id="edWeb" size="80"
- 			style="border:none;background-color:lightgray"/>
-
-	<br>
-	Picture Url: <input type="text" name="picture" id="edPicture" size="80"
- 			style="border:none;background-color:lightgray"/>
-	<br>
-	<p>
+	<div class="title">
+		<p class="tittletext">Add Game</p>
+	</div>
+	<form class="gameform" action="/add" method="post">
+		Name: </br><input type="text" name="name" id="edName" size="80"/>
+		</br></br>
+		Company: </br><input type="text" name="company" id="edCompany" size="80">
+		</br></br>
+		Web: </br><input type="text" name="web" id="edWeb" size="80">
+		</br></br>
+		Picture Url: </br><input type="text" name="picture" id="edPicture" size="80">
+		</br><br>
 		<input type="image"
-			class="styled-button"
-		 	title="modify" alt="modify"
-			width="16px" height="16px" src="/res/modify.svg"/>
-	</p>
-</form>
-</div>
-<div id="dvError">
-</div>
-<div id="dvActions">
-	<a href="/main"><img width="24px" height="24px" alt="back" title="back" class="styled-button" src="/res/back.svg"/></a>
-</div>
+			class="button"
+			title="update" alt="update" src="/res/add.svg"/>
+	</form>
 </body>
 </html>
