@@ -39,6 +39,7 @@ class AddHandler(webapp2.RequestHandler):
             game.id = game.key
             game.name = self.request.get("name").strip()
             game.user = user.user_id()
+            game.description = self.request.get("description").strip()
             game.picture = self.request.get("picture").strip()
             game.web = self.request.get("web").strip()
             game.company = self.request.get("company").strip()

@@ -7,3 +7,4 @@ class Comment(ndb.Model):
     finished = ndb.BooleanProperty()
     comment = ndb.StringProperty(required = True)
     punctuation = ndb.IntegerProperty()
+    date = ndb.DateProperty(auto_now_add = True)

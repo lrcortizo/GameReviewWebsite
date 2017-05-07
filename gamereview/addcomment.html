@@ -31,22 +31,15 @@
 </header>
 <body>
 	<div class="title">
-		<p class="tittletext">Add Game</p>
+		<p class="tittletext">Add Comment</p>
 	</div>
-	<form class="gameform" action="/add" method="post">
-		Name: </br><input type="text" name="name" id="edName" size="80"/>
+	<form class="gameform" action="/addcomment?id={{game.key.urlsafe()}}" method="post">
+		Comment: </br><input type="textarea" name="comment" id="edComment" size="80"/>
 		</br></br>
-		Description: </br><input type="text" name="description" id="edDescription" size="80"/>
+		Played hours: </br><input type="text" name="hours" id="edHours" size="80"/>
 		</br></br>
-		Company: </br><input type="text" name="company" id="edCompany" size="80">
-		</br></br>
-		Web: </br><input type="text" name="web" id="edWeb" size="80">
-		</br></br>
-		Picture Url: </br><input type="text" name="picture" id="edPicture" size="80">
-		</br><br>
-		<input type="image"
-			class="button"
-			title="update" alt="update" src="/res/add.svg"/>
+		<input class="buttontext" type="submit" value="Add comment">
+        </br></br>
 	</form>
 </body>
 </html>

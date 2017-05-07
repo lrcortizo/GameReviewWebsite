@@ -24,6 +24,9 @@ from update import UpdateHandler
 from remove import RemoveHandler
 from details import DetailsHandler
 from usergames import UserGamesHandler
+from addcomment import AddCommentHandler
+from updatecomment import UpdateCommentHandler
+from removecomment import RemoveCommentHandler
 from error import ErrorHandler
 from google.appengine.api import users
 
@@ -69,4 +72,7 @@ app = webapp2.WSGIApplication([
     ("/error", ErrorHandler),
     ("/details", DetailsHandler),
     ("/usergames", UserGamesHandler),
+    ("/addcomment", AddCommentHandler),
+    ("/updatecomment", UpdateCommentHandler),
+    ("/removecomment", RemoveCommentHandler),
 ], debug=True)

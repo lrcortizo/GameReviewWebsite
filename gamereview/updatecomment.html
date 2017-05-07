@@ -75,25 +75,16 @@
 </header>
 <body>
 <div class="title">
-<p class="tittletext">Modify Game</p>
+<p class="tittletext">Modify Comment</p>
 </div>
 <form class="gameform"
 	onsubmit="javascript: return chk();"
-	action="/update?id={{game.key.urlsafe()}}" method="post">
-	Name: </br><input type="text" name="name" id="edName" size="80"
-			value="{{game.name}}">
+	action="/updatecomment?id={{comment.key.urlsafe()}}" method="post">
+	Comment: </br><input type="textarea" name="comment" id="edComment" size="80"
+			value="{{comment.comment}}">
 	</br></br>
-	Name: </br><input type="text" name="description" id="edDescription" size="80"
-			value="{{game.description}}">
-	</br></br>
-	Company: </br><input type="text" name="company" id="edCompany" size="80"
-			value="{{game.company}}">
-	</br></br>
-	Web: </br><input type="text" name="web" id="edWeb" size="80"
-			value="{{game.web}}">
-		</br></br>
-	Picture Url: </br><input type="text" name="picture" id="edPicture" size="80"
-			value="{{game.picture}}">
+	Played hours: </br><input type="text" name="hours" id="edHours" size="80"
+			value="{{comment.numHours}}">
 	</br></br>
 		<input type="image"
 			class="button"

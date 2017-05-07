@@ -1,7 +1,7 @@
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-from game import Game
+from comment import Comment
 
 import time
 import os
@@ -13,7 +13,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions = ["jinja2.ext.autoescape"],
     autoescape = True)
 
-class RemoveHandler(webapp2.RequestHandler):
+class RemoveCommentHandler(webapp2.RequestHandler):
     def get(self):
         try:
             id = self.request.GET['id']
@@ -27,11 +27,11 @@ class RemoveHandler(webapp2.RequestHandler):
 
         if user != None:
             try:
-                game = ndb.Key(urlsafe = id).get()
+                comment = ndb.Key(urlsafe = id).get()
             except:
                 self.redirect("/error?msg=key was not found")
                 return
-            game.key.delete()
+            comment.key.delete()
             time.sleep(1)
             self.redirect("/")
         else:

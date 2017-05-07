@@ -30,18 +30,32 @@
 	</div>
 </header>
 <body>
-<div class="title">
-<p class="tittletext">{{game.name}}</p>
-</div>
-<div class="gameform">
-	Name: </br>{{game.name}}
-	</br></br>
-	Company: </br>{{game.web}}
-    </br></br>
-	Web: </br>{{game.web}}
-    </br></br>
-	Picture Url: </br>{{game.picture}}
-	</br></br>
-</div>
+	<div class="title">
+		<p class="tittletext">{{game.name}}</p>
+	</div>
+	<div class="gameform">
+		Name: </br>{{game.name}}
+		</br></br>
+		Company: </br>{{game.web}}
+		</br></br>
+		Web: </br>{{game.web}}
+		</br></br>
+		Picture Url: </br>{{game.picture}}
+		</br></br>
+		<a href="/addcomment?id={{game.key.urlsafe()}}"><button class="buttontext">Add comment</button></a>
+		</br></br>
+	</div>
+	{% for comment in comments %}
+	<div class="gameform">
+		Comment: </br>{{comment.comment}}
+		</br></br>
+		Played hours: </br>{{comment.numHours}}
+		</br></br>
+		{% if comment.user == iduser %}
+		<a href="/updatecomment?id={{comment.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/res/update.svg"/></a>
+		<a href="/removecomment?id={{comment.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/res/remove.svg"/></a>
+		{% endif %}
+	</div>
+	{% endfor %}
 </body>
 </html>
