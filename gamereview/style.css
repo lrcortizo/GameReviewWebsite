@@ -305,7 +305,9 @@ header {
     padding-left: 10px;
     background: rgba(120,120,120,1);
     border-radius: 5px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: bold;
 }
 
 /* Buttons */
@@ -325,6 +327,13 @@ header {
 }
 
 textarea {
+    border-radius: 5px;
+    border-color: #C50000;
+    border-style: inset;
+    border-width: 2px;
+}
+
+.textinput{
     border-radius: 5px;
     border-color: #C50000;
     border-style: inset;
