@@ -78,6 +78,6 @@ class UpdateHandler(webapp2.RequestHandler):
 
             game.put()
             time.sleep(1)
-            self.redirect("/")
+            self.redirect("/usergames")
         else:
             self.redirect("/")

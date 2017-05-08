@@ -33,7 +33,7 @@ class RemoveHandler(webapp2.RequestHandler):
                 return
             game.key.delete()
             time.sleep(1)
-            self.redirect("/")
+            self.redirect("/usergames")
         else:
             self.redirect("/")
 

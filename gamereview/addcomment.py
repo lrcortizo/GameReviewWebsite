@@ -79,6 +79,6 @@ class AddCommentHandler(webapp2.RequestHandler):
 
             comment.put()
             time.sleep(1)
-            self.redirect("/")
+            self.redirect("/details?id="+game.key.urlsafe())
         else:
             self.redirect("/")
