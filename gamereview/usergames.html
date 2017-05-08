@@ -40,9 +40,14 @@
 					<a href="/details?id={{game.key.urlsafe()}}"><img class="img" src="{{game.picture}}"></a>
 				</div>
 				<div class ="gamedescription">
-					<a href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a><br>
+					Name:
+					<a class="link" href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a><br>
+					Company:
+					{{game.company}}</br>
+					Date:
 					{{game.date}}<br>
-					<a target="_blank" href="{{game.web}}">{{game.web}}</a><br>
+					Web:
+					<a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a><br>
 					<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/res/update.svg"/></a>
 					<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/res/remove.svg"/></a>
 				</div>
