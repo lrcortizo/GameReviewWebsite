@@ -1,12 +1,29 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+ul, ol {
+    list-style: none;
+}
+/*Header*/
 header {
     border-radius: 8px;
     background: rgba(120,120,120,1);
-background: -moz-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
-background: -webkit-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
-background: -o-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
-background: -ms-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
-background: linear-gradient(to bottom, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#787878', endColorstr='#454444', GradientType=0 );
+    background: -moz-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -o-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -ms-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: linear-gradient(to bottom, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#787878', endColorstr='#454444', GradientType=0 );
     color: white;
     height: 120px;
     margin-bottom: 50px;
@@ -32,6 +49,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#787878', end
 }
 
 #logo {
+    margin-top: 15px;
     float: left;
     width: 120px;
     height: 90px;
@@ -44,30 +62,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#787878', end
     padding-right: 10px;
 }
 
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-a:link, a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    cursor: pointer;
-}
-
-ul, ol {
-    list-style: none;
-}
-
 .profile {
+    margin-top: 20px;
     float: right;
     border: solid;
     border-radius: 5px;
     border-color: white;
     display: block;
-    width: 150px;
+    min-width: 150px;
+}
+
+#loginlink{
+    margin-top: 50px;
+    float: right;
+    display: block;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#loginlink:visited, #loginlink:link {
+    text-decoration: none;
+    color: white;
+}
+
+#loginlink:hover {
+    color: black;
+    cursor: pointer;
 }
 
 #nav {
@@ -147,29 +168,14 @@ ul, ol {
 #dvError {
   display: none;
   color: white;
-  background-color: red;
+  background-color: #C50000;
   margin: 20px;
   padding: 10px;
   font-size: 16pt;
   font-weight: bold;
 }
 
-/* Hyperlinks */
-a {
-	color: green;
-	text-decoration:none;
-}
-
-a:hover {
-	color: darkgreen;
-	text-decoration:none
-}
-
-a:visited {
-	color: green;
-	text-decoration:none
-}
-
+/* Content */
 .games{
     position: absolute;
 }
@@ -182,16 +188,68 @@ a:visited {
   font-size: 16pt
 }
 
+#login {
+    position: relative;
+    margin-top: 15%;
+    margin-left: 35%;
+    text-align: center;
+    width: 23%;
+    height: 10%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #C50000;
+    padding-left: 10px;
+    padding-bottom: 30px;
+    background: rgba(120,120,120,1);
+    background: -moz-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -o-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -ms-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: linear-gradient(to bottom, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#787878', endColorstr='#454444', GradientType=0 );
+    border-radius: 5px;
+    -webkit-box-shadow: 10px 10px 10px -5px #C50000;
+    -moz-box-shadow: 10px 10px 10px -5px #C50000;
+}
+
+#loginlink2{
+    float: right;
+    display: block;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#loginlink2:visited, #loginlink2:link {
+    text-decoration: none;
+    color: white;
+}
+
+#loginlink2:hover {
+    color: black;
+    cursor: pointer;
+}
+
 .game{
-    margin: 20px;
+    margin-left: 20px;
     padding: 10px;
     background: rgba(120,120,120,1);
+    background: -moz-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -o-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: -ms-linear-gradient(top, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    background: linear-gradient(to bottom, rgba(120,120,120,1) 0%, rgba(113,113,113,1) 15%, rgba(106,105,105,1) 29%, rgba(98,98,98,1) 43%, rgba(91,90,90,1) 56%, rgba(84,83,83,1) 70%, rgba(76,75,75,1) 84%, rgba(69,68,68,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#787878', endColorstr='#454444', GradientType=0 );
     position: relative;
     display: inline-block;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #C50000;
+    border-radius: 5px;
+    -webkit-box-shadow: 5px 5px 5px -5px #C50000;
+    -moz-box-shadow: 5px 5px 5px -5px #C50000;
     margin-bottom: 20px;
+    min-width: 600px;
 }
 
 .gameimg{
@@ -200,20 +258,31 @@ a:visited {
 }
 
 .img{
-    width: 200px;
-    height: 200px;
-    border: 1px solid #63baf9;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #C50000;
 }
 
 .gamedescription {
-    float: right;
+    float: left;
     vertical-align: bottom;
     background: rgba(120,120,120,1);
     color: black;
     font-size: 25px;
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     margin-bottom: 10px;
+}
+
+.link:visited, .link:link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    color: #C50000;
+    cursor: pointer;
 }
 
 #title{
@@ -224,6 +293,7 @@ a:visited {
     color: black;
     font-size: 25px;
     font-weight: bold;
+    margin-left: 20px;
 }
 
 .gameform {
@@ -231,13 +301,10 @@ a:visited {
     margin: 20px;
     border-style: solid;
     border-width: 3px;
-    border-color: #94cdf2;
+    border-color: #C50000;
     padding-left: 10px;
     background: rgba(120,120,120,1);
     border-radius: 5px;
-    -webkit-box-shadow: 10px 10px 10px -5px rgba(20, 132, 200, 1);
-    -moz-box-shadow: 10px 10px 10px -5px rgba(20, 132, 200, 1);
-    box-shadow: 10px 10px 10px -5px rgba(20, 132, 200, 1);
     padding-bottom: 30px;
 }
 
@@ -249,8 +316,8 @@ a:visited {
 
 .buttontext {
     border-radius: 5px;
-    background-color: #3193CF;
-    border-color: rgb(83, 140, 230);
+    background-color: #C50000;
+    border-color: #C50000;
     cursor: pointer;
     font-weight: bold;
     color: white;
@@ -259,7 +326,7 @@ a:visited {
 
 textarea {
     border-radius: 5px;
-    border-color: #1484C8;
+    border-color: #C50000;
     border-style: inset;
     border-width: 2px;
 }
