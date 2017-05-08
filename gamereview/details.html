@@ -38,15 +38,15 @@
 			<img class="imgdetails" src="{{game.picture}}">
 		</div>
 		<div class ="gamedescription">
-		Name: </br>{{game.name}}
+			<b class="titles">Name: </b></br>{{game.name}}
 		</br></br>
-		Description: </br>{{game.description}}
+		<b class="titles">Description: </b></br>{{game.description}}
 		</br></br>
-		Company: </br>{{game.web}}
+		<b class="titles">Company: </b></br>{{game.web}}
 		</br></br>
-		Web: </br>{{game.web}}
+		<b class="titles">Web: </b></br>{{game.web}}
 		</br></br>
-		Upload date: </br>{{game.date}}
+		<b class="titles">Upload date: </b></br>{{game.date}}
 		</br></br>
 		{% if game.user == iduser %}
 			<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/res/update.svg"/></a>
@@ -60,9 +60,9 @@
 	</div>
 	{% for comment in comments %}
 	<div class="gameform">
-		Comment: </br>{{comment.comment}}
+		<b class="titles">Comment: </b></br>{{comment.comment}}
 		</br></br>
-		Played hours: </br>{{comment.numHours}}
+		<b class="titles">Played hours: </b></br>{{comment.numHours}}
 		</br></br>
 		{% if comment.user == iduser %}
 		<a href="/updatecomment?id={{comment.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/res/update.svg"/></a>

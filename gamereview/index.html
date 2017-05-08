@@ -43,13 +43,13 @@
 						<a href="/details?id={{game.key.urlsafe()}}"><img class="img" src="{{game.picture}}"></a>
 					</div>
 					<div class ="gamedescription">
-						Name:
+						<b class="titles">Name:</b>
 						<a class="link" href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a></br>
-						Company:
+						<b class="titles">Company:</b>
 						{{game.company}}</br>
-						Upload date:
+						<b class="titles">Upload date:</b>
 						{{game.date}}</br>
-						Web:
+						<b class="titles">Web:</b>
 						<a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a></br>
 						{% if game.user == iduser %}
 						<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/res/update.svg"/></a>

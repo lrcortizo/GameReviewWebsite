@@ -326,6 +326,11 @@ header {
     margin-left: 20px;
 }
 
+.titles{
+    color: #C50000;
+    font-weight: bold;
+}
+
 /* Buttons */
 .button {
     width: 40px;
