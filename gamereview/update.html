@@ -80,19 +80,19 @@
 <form class="gameform"
 	onsubmit="javascript: return chk();"
 	action="/update?id={{game.key.urlsafe()}}" method="post">
-	Name: </br><input type="text" name="name" id="edName" size="80"
+	Name: </br><input class="textinput" type="text" name="name" id="edName" size="80"
 			value="{{game.name}}">
 	</br></br>
-	Description: </br><input type="text" name="description" id="edDescription" size="80"
+	Description: </br><input class="textinput" type="text" name="description" id="edDescription" size="80"
 			value="{{game.description}}">
 	</br></br>
-	Company: </br><input type="text" name="company" id="edCompany" size="80"
+	Company: </br><input class="textinput" type="text" name="company" id="edCompany" size="80"
 			value="{{game.company}}">
 	</br></br>
-	Web: </br><input type="text" name="web" id="edWeb" size="80"
+	Web: </br><input class="textinput" type="text" name="web" id="edWeb" size="80"
 			value="{{game.web}}">
 		</br></br>
-	Picture Url: </br><input type="text" name="picture" id="edPicture" size="80"
+	Picture Url: </br><input class="textinput" type="text" name="picture" id="edPicture" size="80"
 			value="{{game.picture}}">
 	</br></br>
 		<input type="image"
