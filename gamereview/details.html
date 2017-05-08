@@ -64,6 +64,14 @@
 		</br></br>
 		<b class="titles">Played hours: </b></br>{{comment.numHours}}
 		</br></br>
+		{% if comment.finished == True %}
+		<b class="titles">Finished: </b></br>Yes
+		{% else %}
+		<b class="titles">Finished: </b></br>No
+		{% endif %}
+		</br></br>
+		<b class="titles">Punctuation: </b></br>{{comment.punctuation}}
+		</br></br>
 		{% if comment.user == iduser %}
 		<a href="/updatecomment?id={{comment.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/res/update.svg"/></a>
 		<a href="/removecomment?id={{comment.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/res/remove.svg"/></a>

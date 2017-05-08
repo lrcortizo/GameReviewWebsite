@@ -36,7 +36,12 @@
 	<form class="gameform" action="/addcomment?id={{game.key.urlsafe()}}" method="post">
 		Comment: </br><input type="textarea" name="comment" id="edComment" size="80"/>
 		</br></br>
-		Played hours: </br><input type="text" name="hours" id="edHours" size="80"/>
+		Played hours: </br><input type="text" name="hours" id="edHours" size="3"/>
+		</br></br>
+		Game finished: </br>Yes<input type="radio" name="finished" id="finished1"value="yes"/>
+		No<input type="radio" name="finished" id="finished2" value="no"/>
+		</br></br>
+		Punctuation(1 to 5): </br><input type="text" name="punctuation" id="edPunctuation" size="1"/>
 		</br></br>
 		<input class="buttontext" type="submit" value="Add comment">
         </br></br>

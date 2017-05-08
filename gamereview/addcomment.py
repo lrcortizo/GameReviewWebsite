@@ -71,7 +71,12 @@ class AddCommentHandler(webapp2.RequestHandler):
             comment.game = game.id
             comment.user = user.user_id()
             comment.comment = self.request.get("comment").strip()
-            comment.numHours = self.request.get("hours").strip()
+            comment.numHours = int(self.request.get("hours").strip())
+            if "yes" == self.request.get("finished").strip():
+                comment.finished = True
+            else:
+                comment.finished = False
+            comment.punctuation = int(self.request.get("punctuation").strip())
 
             if len(comment.comment) < 1:
                 self.redirect("/error?msg=" + "Modification aborted: serie's name is mandatory")
