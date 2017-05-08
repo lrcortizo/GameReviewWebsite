@@ -267,6 +267,12 @@ header {
     border: 1px solid #C50000;
 }
 
+.imgdetails{
+    width: 600px;
+    height: 600px;
+    border: 1px solid #C50000;
+}
+
 .gamedescription {
     float: left;
     vertical-align: bottom;
@@ -302,7 +308,8 @@ header {
 
 .gameform {
     position: relative;
-    margin: 20px;
+    margin-top: 30px;
+    margin-left: 20px;
     border-style: solid;
     border-width: 3px;
     border-color: #C50000;
@@ -312,6 +319,11 @@ header {
     padding-bottom: 10px;
     padding-top: 10px;
     font-weight: bold;
+}
+
+#comment{
+    position: absolute;
+    margin-left: 20px;
 }
 
 /* Buttons */
@@ -325,6 +337,7 @@ header {
     background-color: #C50000;
     border-color: #C50000;
     cursor: pointer;
+    font-size: 18px;
     font-weight: bold;
     color: white;
     float: left;
