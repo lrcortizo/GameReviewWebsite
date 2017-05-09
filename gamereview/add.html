@@ -20,7 +20,6 @@
 			}
 
 			function validate() {
-				var toret = true;
 				var edName = document.getElementById( "edName" );
 				var edDescription = document.getElementById( "edDescription" );
 				var edCompany = document.getElementById( "edCompany" );
@@ -43,14 +42,14 @@
 					return false;
 				}
 				if (!expreg.test(edWeb.value)) {
-					showError( "ERROR: You must to introduce a valid URL form like http://www.example.com/" );
+					showError( "ERROR: You must to introduce a valid URL format like http://www.example.com/" );
 					return false;
 				}
-				if ( edPicture.value.trim().length == 0 ) {
-					showError( "ERROR: Must to introduce a picture URL" );
+				if ( !expreg.test(edPicture.value) ) {
+					showError( "ERROR: You must to introduce a valid picture URL format like http://www.example.com/picture" );
 					return false;
 				}
-				return toret;
+				return true;
 			}
 		</script>
 	</head>
