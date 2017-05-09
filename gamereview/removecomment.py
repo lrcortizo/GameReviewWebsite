@@ -21,7 +21,7 @@ class RemoveCommentHandler(webapp2.RequestHandler):
             id = None
 
         if id == None:
-            self.redirect("/error?msg=game was not found")
+            self.redirect("/error?msg=Comment was not found")
             return
         user = users.get_current_user()
 
@@ -29,7 +29,7 @@ class RemoveCommentHandler(webapp2.RequestHandler):
             try:
                 comment = ndb.Key(urlsafe = id).get()
             except:
-                self.redirect("/error?msg=key was not found")
+                self.redirect("/error?msg=Comment key was not found")
                 return
             comment.key.delete()
             time.sleep(1)

@@ -21,7 +21,7 @@ class UpdateCommentHandler(webapp2.RequestHandler):
             id = None
 
         if id == None:
-            self.redirect("/error?msg=serie was not found")
+            self.redirect("/error?msg=Comment was not found")
             return
 
         user = users.get_current_user()
@@ -33,7 +33,7 @@ class UpdateCommentHandler(webapp2.RequestHandler):
             try:
                 comment = ndb.Key(urlsafe = id).get()
             except:
-                self.redirect("/error?msg=key does not exist")
+                self.redirect("/error?msg=Comment key doesn't exist")
                 return
 
             template_values = {
@@ -54,7 +54,7 @@ class UpdateCommentHandler(webapp2.RequestHandler):
             id = None
 
         if id == None:
-            self.redirect("/error?msg=missing id for modification")
+            self.redirect("/error?msg=Missing id for modification")
             return
 
         user = users.get_current_user()
@@ -63,7 +63,7 @@ class UpdateCommentHandler(webapp2.RequestHandler):
             try:
                 comment = ndb.Key(urlsafe = id).get()
             except:
-                self.redirect("/error?msg=key does not exist")
+                self.redirect("/error?msg=Comment key does not exist")
                 return
 
             comment.comment = self.request.get("comment").strip()
@@ -73,10 +73,6 @@ class UpdateCommentHandler(webapp2.RequestHandler):
             else:
                 comment.finished = False
             comment.punctuation = int(self.request.get("punctuation").strip())
-
-            if len(comment.comment) < 1:
-                self.redirect("/error?msg=" + "Modification aborted: serie's name is mandatory")
-                return
 
             comment.put()
             time.sleep(1)
