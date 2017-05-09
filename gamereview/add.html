@@ -1,52 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="style.css">
-	<title>Game Review</title>
-</head>
-<header>
-	<div class="headercontent">
-		<a  href="/"><img id="logo" src="./res/logo.png"></a>
-	</div>
-	<div class="headercontent">
-		<a id="indexlink" href="/">Game Review</a>
-	</div>
-	<div class="headercontent">
-		{% if user_name == "Please login" %}
-			<a href="{{access_link}}">Login</a>
-		{% else %}
-			<div class="profile">
-				<ul id="nav">
-  	        		<div class="menu">{{user_name}}</br>▼
-						<ul>
-							<div class="submenu"><a href="/usergames">My games</a></div>
-							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
-              			</ul>
-  	        		</div>
-  	      		</ul>
-			</div>
-		{% endif %}
-	</div>
-</header>
-<body>
-	<div class="title">
-		<p class="tittletext">Add Game</p>
-	</div>
-	<form class="gameform" action="/add" method="post">
-		Name: </br><input class="textinput" type="text" name="name" id="edName" size="80"/>
-		</br></br>
-		Description: </br><textarea type="textarea" name="description" id="edDescription" placeholder="Add description" cols="81" rows="10"></textarea>
-		</br></br>
-		Company: </br><input class="textinput" type="text" name="company" id="edCompany" size="80">
-		</br></br>
-		Web: </br><input class="textinput" type="text" name="web" id="edWeb" size="80">
-		</br></br>
-		Picture Url: </br><input class="textinput" type="text" name="picture" id="edPicture" size="80">
-		</br><br>
-		<input type="image"
-			class="button"
-			title="add" alt="add" src="/res/add.svg"/>
-	</form>
-</body>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="style.css">
+		<title>Game Review</title>
+		<script type="text/javascript">
+				function hideError() {
+				document.getElementById( "dvError" ).style.display = "none";
+			}
+
+			function showError(msg) {
+				var dvError = document.getElementById( "dvError" );
+				var pError = document.createElement( "p" );
+
+				dvError.innerHTML = "";
+				dvError.appendChild( pError );
+				pError.appendChild( document.createTextNode( msg ) );
+				dvError.style.display = "block";
+			}
+
+			function validate() {
+				var toret = true;
+				var edName = document.getElementById( "edName" );
+				var edDescription = document.getElementById( "edDescription" );
+				var edCompany = document.getElementById( "edCompany" );
+				var edWeb = document.getElementById( "edWeb" );
+				var edPicture = document.getElementById( "edPicture" );
+
+
+				hideError();
+
+				if ( edName.value.trim().length == 0 ) {
+					showError( "ERROR: You must to introduce a name" );
+					return false;
+				}
+				if ( edDescription.value.trim().length == 0 ) {
+					showError( "ERROR: You must to introduce a description" );
+					return false;
+				}
+				if ( edCompany.value.trim().length == 0 ) {
+					showError( "ERROR: You must to introduce a company" );
+					return false;
+				}
+				if (!expreg.test(edWeb.value)) {
+					showError( "ERROR: You must to introduce a valid URL form like http://www.example.com/" );
+					return false;
+				}
+				if ( edPicture.value.trim().length == 0 ) {
+					showError( "ERROR: Must to introduce a picture URL" );
+					return false;
+				}
+				return toret;
+			}
+		</script>
+	</head>
+	<header>
+		<div class="headercontent">
+			<a  href="/"><img id="logo" src="./res/logo.png"></a>
+		</div>
+		<div class="headercontent">
+			<a id="indexlink" href="/">Game Review</a>
+		</div>
+		<div class="headercontent">
+			{% if user_name == "Please login" %}
+				<a href="{{access_link}}">Login</a>
+			{% else %}
+				<div class="profile">
+					<ul id="nav">
+						<div class="menu">{{user_name}}</br>▼
+							<ul>
+								<div class="submenu"><a href="/usergames">My games</a></div>
+								<div class="submenu"><a href="{{access_link}}">Logout</a></div>
+							</ul>
+						</div>
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+	</header>
+	<body>
+		<div class="title">
+			<p class="tittletext">Add Game</p>
+		</div>
+		<div id="dvError"></div>
+		<form class="gameform" onsubmit="javascript: return validate();" action="/add" method="post">
+			Name: </br><input class="textinput" type="text" name="name" id="edName" size="80"/>
+			</br></br>
+			Description: </br><textarea type="textarea" name="description" id="edDescription" placeholder="Add description" cols="81" rows="10"></textarea>
+			</br></br>
+			Company: </br><input class="textinput" type="text" name="company" id="edCompany" size="80">
+			</br></br>
+			Web: </br><input class="textinput" type="text" name="web" id="edWeb" size="80">
+			</br></br>
+			Picture Url: </br><input class="textinput" type="text" name="picture" id="edPicture" size="80">
+			</br><br>
+			<input type="image"
+				class="button"
+				title="add" alt="add" src="/res/add.svg"
+				onsubmit="javascript: document.gameform.submit()"/>
+		</form>
+	</body>
 </html>

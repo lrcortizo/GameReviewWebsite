@@ -175,8 +175,7 @@ header {
   display: none;
   color: white;
   background-color: #C50000;
-  margin: 20px;
-  padding: 10px;
+  margin-left: 20px;
   font-size: 16pt;
   font-weight: bold;
 }

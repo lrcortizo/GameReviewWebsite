@@ -19,17 +19,37 @@
 			dvError.style.display = "block";
 		}
 
-		function chk() {
-			var toret = true;
+		function validate() {
 			var edName = document.getElementById( "edName" );
+			var edDescription = document.getElementById( "edDescription" );
+			var edCompany = document.getElementById( "edCompany" );
+			var edWeb = document.getElementById( "edWeb" );
+			var edPicture = document.getElementById( "edPicture" );
+			var expreg = new RegExp("^http.+$");
 
 			hideError();
 
 			if ( edName.value.trim().length == 0 ) {
-				showError( "Name is mandatory" );
-				toret = false;
+				showError( "ERROR: You must to introduce a name" );
+				toret =  false;
 			}
-			return toret;
+			if ( edDescription.value.trim().length == 0 ) {
+				showError( "ERROR: You must to introduce a description" );
+				return false;
+			}
+			if ( edCompany.value.trim().length == 0 ) {
+				showError( "ERROR: You must to introduce a company" );
+				return false;
+			}
+			if (!expreg.test(edWeb.value)) {
+			    showError( "ERROR: You must to introduce a valid URL form like http://www.example.com/" );
+				return false;
+			}
+			if ( edPicture.value.trim().length == 0 ) {
+				showError( "ERROR: Must to introduce a picture URL" );
+				return false;
+			}
+			return true;
 		}
 	</script>
 </head>
@@ -58,32 +78,33 @@
 	</div>
 </header>
 <body>
-<div class="title">
-<p class="tittletext">Modify Game</p>
-</div>
-<form class="gameform"
-	onsubmit="javascript: return chk();"
-	action="/update?id={{game.key.urlsafe()}}" method="post">
-	Name: </br><input class="textinput" type="text" name="name" id="edName" size="80"
-			value="{{game.name}}">
-	</br></br>
-	Description: </br><input class="textinput" type="text" name="description" id="edDescription" size="80"
-			value="{{game.description}}">
-	</br></br>
-	Company: </br><input class="textinput" type="text" name="company" id="edCompany" size="80"
-			value="{{game.company}}">
-	</br></br>
-	Web: </br><input class="textinput" type="text" name="web" id="edWeb" size="80"
-			value="{{game.web}}">
+	<div class="title">
+		<p class="tittletext">Modify Game</p>
+	</div>
+	<div id="dvError"></div>
+	<form class="gameform"
+		onsubmit="javascript: return validate();"
+		action="/update?id={{game.key.urlsafe()}}" method="post">
+		Name: </br><input class="textinput" type="text" name="name" id="edName" size="80"
+				value="{{game.name}}">
 		</br></br>
-	Picture Url: </br><input class="textinput" type="text" name="picture" id="edPicture" size="80"
-			value="{{game.picture}}">
-	</br></br>
-		<input type="image"
-			class="button"
-		 	title="modify" alt="modify"
-			width="16px" height="16px" src="/res/update.svg"
-			onsubmit="javascript: document.gameform.submit()"/>
-</form>
+		Description: </br><input class="textinput" type="text" name="description" id="edDescription" size="80"
+				value="{{game.description}}">
+		</br></br>
+		Company: </br><input class="textinput" type="text" name="company" id="edCompany" size="80"
+				value="{{game.company}}">
+		</br></br>
+		Web: </br><input class="textinput" type="text" name="web" id="edWeb" size="80"
+				value="{{game.web}}">
+			</br></br>
+		Picture Url: </br><input class="textinput" type="text" name="picture" id="edPicture" size="80"
+				value="{{game.picture}}">
+		</br></br>
+			<input type="image"
+				class="button"
+				title="modify" alt="modify"
+				width="16px" height="16px" src="/res/update.svg"
+				onsubmit="javascript: document.gameform.submit()"/>
+	</form>
 </body>
 </html>

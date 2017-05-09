@@ -1,101 +1,135 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="style.css">
-	<title>Game Review</title>
-	<script type="text/javascript">
-		function hideError() {
-			document.getElementById( "dvError" ).style.display = "none";
-		}
-
-		function showError(msg) {
-			var dvError = document.getElementById( "dvError" );
-			var pError = document.createElement( "p" );
-
-			dvError.innerHTML = "";
-			dvError.appendChild( pError );
-			pError.appendChild( document.createTextNode( msg ) );
-			dvError.style.display = "block";
-		}
-
-		function chk() {
-			var toret = true;
-			var edName = document.getElementById( "edName" );
-			var edSeason = document.getElementById( "edSeason" );
-			var edEpisode = document.getElementById( "edEpisode" );
-
-			hideError();
-
-			if ( edName.value.trim().length == 0 ) {
-				showError( "Name is mandatory" );
-				toret = false;
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="style.css">
+		<title>Game Review</title>
+		<script type="text/javascript">
+			function hideError() {
+				document.getElementById( "dvError" ).style.display = "none";
 			}
 
-			var season = parseInt( edSeason.value, 10 );
-			var episode = parseInt( edEpisode.value, 10 );
+			function showError(msg) {
+				var dvError = document.getElementById( "dvError" );
+				var pError = document.createElement( "p" );
 
-			if ( season < 1 ) {
-				showError( "Season must be an integer greater than 0" );
-				toret = false;
+				dvError.innerHTML = "";
+				dvError.appendChild( pError );
+				pError.appendChild( document.createTextNode( msg ) );
+				dvError.style.display = "block";
 			}
 
-			if ( episode < 1 ) {
-				showError( "Episode must be an integer greater than 0" );
-				toret = false;
-			}
+			function validate() {
+				var edComment = document.getElementById( "edComment" );
+				var edHours = document.getElementById( "edHours" );
+				var edPunctuation = document.getElementById( "edPunctuation" );
+				finished = document.getElementsByName("finished");
 
-			return toret;
-		}
-	</script>
-</head>
-<header>
-	<div class="headercontent">
-		<a  href="/"><img id="logo" src="./res/logo.png"></a>
-	</div>
-	<div class="headercontent">
-		<a id="indexlink" href="/">Game Review</a>
-	</div>
-	<div class="headercontent">
-		{% if user_name == "Please login" %}
-			<a href="{{access_link}}">Login</a>
-		{% else %}
-			<div class="profile">
-				<ul id="nav">
-  	        		<div class="menu">{{user_name}}</br>▼
-						<ul>
-							<div class="submenu"><a href="/usergames">My games</a></div>
-							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
-              			</ul>
-  	        		</div>
-  	      		</ul>
-			</div>
-		{% endif %}
-	</div>
-</header>
-<body>
-<div class="title">
-<p class="tittletext">Modify Comment</p>
-</div>
-<form class="gameform"
-	onsubmit="javascript: return chk();"
-	action="/updatecomment?id={{comment.key.urlsafe()}}" method="post">
-	Comment: </br><input type="textarea" name="comment" id="edComment" size="80"
-			value="{{comment.comment}}">
-	</br></br>
-	Played hours: </br><input type="text" name="hours" id="edHours" size="80"
-			value="{{comment.numHours}}">
-	</br></br>
-	Game finished: </br>Yes<input type="radio" name="finished" id="finished1"value="yes"/>
-	No<input type="radio" name="finished" id="finished2" value="no"/>
-	</br></br>
-	Punctuation(1 to 5): </br><input type="text" name="punctuation" id="edPunctuation" size="1" value="{{comment.punctuation}}"/>
-	</br></br>
-		<input type="image"
-			class="button"
-		 	title="modify" alt="modify"
-			width="16px" height="16px" src="/res/update.svg"
-			onsubmit="javascript: document.gameform.submit()"/>
-</form>
-</body>
+				hideError();
+
+				var seleccionado = false;
+				for(var i=0; i<finished.length; i++) {
+				  if(finished[i].checked) {
+					seleccionado = true;
+					break;
+				  }
+				}
+
+				if(!seleccionado) {
+				    showError( "ERROR: You must to indicate if game is finished or no" );
+				    return false;
+				}
+
+				if ( edComment.value.trim().length == 0 ) {
+					showError( "ERROR: You must to introduce a comment" );
+					return false;
+				}
+
+				if ( edHours.value.trim().length == 0 ) {
+					showError( "ERROR: You must to introduce the played hours" );
+					return false;
+				}
+
+				if ( edPunctuation.value.trim().length == 0 ) {
+					showError( "ERROR: You must to introduce a punctuation" );
+					return false;
+				}
+
+				if(isNaN(edHours.value)){
+				    showError( "Played hours must be a number" );
+					return false;
+				}
+
+				if(isNaN(edPunctuation.value)){
+				    showError( "Punctuation must be a number" );
+					return false;
+				}
+
+				var hours = parseInt( edHours.value, 10 );
+				var punctuation = parseInt( edPunctuation.value, 10 );
+
+				if ( hours < 1 ) {
+					showError( "Played hours must be an integer greater than 0" );
+					return false;
+				}
+
+				if (punctuation < 1 ||  punctuation > 5) {
+					showError( "Punctuation must be an integer greater between 1 and 5" );
+					return false;
+				}
+
+				return true;
+			}
+		</script>
+	</head>
+	<header>
+		<div class="headercontent">
+			<a  href="/"><img id="logo" src="./res/logo.png"></a>
+		</div>
+		<div class="headercontent">
+			<a id="indexlink" href="/">Game Review</a>
+		</div>
+		<div class="headercontent">
+			{% if user_name == "Please login" %}
+				<a href="{{access_link}}">Login</a>
+			{% else %}
+				<div class="profile">
+					<ul id="nav">
+						<div class="menu">{{user_name}}</br>▼
+							<ul>
+								<div class="submenu"><a href="/usergames">My games</a></div>
+								<div class="submenu"><a href="{{access_link}}">Logout</a></div>
+							</ul>
+						</div>
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+	</header>
+	<body>
+		<div class="title">
+			<p class="tittletext">Modify Comment</p>
+		</div>
+		<div id="dvError"></div>
+		<form class="gameform"
+			onsubmit="javascript: return validate();"
+			action="/updatecomment?id={{comment.key.urlsafe()}}" method="post">
+			Comment: </br><input type="textarea" name="comment" id="edComment" size="80"
+					value="{{comment.comment}}">
+			</br></br>
+			Played hours: </br><input type="text" name="hours" id="edHours" size="80"
+					value="{{comment.numHours}}">
+			</br></br>
+			Game finished: </br>Yes<input type="radio" name="finished" value="yes"/>
+			No<input type="radio" name="finished" value="no"/>
+			</br></br>
+			Punctuation(1 to 5): </br><input type="text" name="punctuation" id="edPunctuation" size="1" value="{{comment.punctuation}}"/>
+			</br></br>
+				<input type="image"
+					class="button"
+					title="modify" alt="modify"
+					width="16px" height="16px" src="/res/update.svg"
+					onsubmit="javascript: document.gameform.submit()"/>
+		</form>
+	</body>
 </html>
