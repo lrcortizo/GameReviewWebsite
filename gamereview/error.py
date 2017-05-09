@@ -1,10 +1,8 @@
-#!/usr/bin/env python
-# MIT License
-# (c) baltasar 2015
-
 import os
 import webapp2
 import jinja2
+
+from google.appengine.api import users
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -13,19 +11,23 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class ErrorHandler(webapp2.RequestHandler):
     def get(self):
-        msg = None
+        user = users.get_current_user()
 
-        try:
-    	    msg = self.request.GET['msg']
-        except:
-            msg = None
+        if user != None:
+            user_name = user.nickname()
+            access_link = users.create_logout_url("/")
+            try:
+                msg = self.request.GET['msg']
+            except:
+                msg = None
 
-    	if msg == None:
-            msg = "CRITICAL - contact development team"
-
-        template_values = {
-			"error_msg": msg,
-		}
+            template_values = {
+                "msg": msg,
+                "user_name": user_name,
+                "acces_link": access_link,
+            }
+        else:
+            self.redirect("/")
 
         template = JINJA_ENVIRONMENT.get_template( "error.html" )
         self.response.write(template.render(template_values));

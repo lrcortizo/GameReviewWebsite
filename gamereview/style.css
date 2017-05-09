@@ -180,6 +180,14 @@ header {
   font-weight: bold;
 }
 
+#error {
+  color: white;
+  background-color: #C50000;
+  margin-left: 20px;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
 /* Content */
 .games{
     position: absolute;

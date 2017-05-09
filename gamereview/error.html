@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="style.css">
-	<title>SeriesWatchMan - Error</title>
-</head>
-<body>
-<div id="dvHeader">
-	<p>
-	<table width="100%">
-		<tr>
-			<td width="80%">&nbsp;</td>
-			<td width="20%">SeriesWatchMan</td>
-		</tr>
-	</table>
-	</p>
-</div>
-<div id="dvTitle">
-<p>Error</p>
-</div>
-<div id="dvSeries">
-	<big><b>Error</big></b>:
-	<br/><i>{{error_msg}}</i>
-</div>
-<div id="dvActions">
-		<a href="/main"><img width="24px" height="24px" alt="back" title="back" class="styled-button" src="/res/back.svg"/></a>
-</div>
-</body>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="style.css">
+		<title>Game Review</title>
+	</head>
+	<header>
+		<div class="headercontent">
+			<a  href="/"><img id="logo" src="./res/logo.png"></a>
+		</div>
+		<div class="headercontent">
+			<a id="indexlink" href="/">Game Review</a>
+		</div>
+		<div class="headercontent">
+			{% if user_name == "Please login" %}
+				<a id="loginlink" href="{{access_link}}">Login</a>
+			{% else %}
+				<div class="profile">
+					<ul id="nav">
+						<div class="menu">{{user_name}}</br>▼
+							<ul>
+								<div class="submenu"><a href="/usergames">My games</a></div>
+								<div class="submenu"><a href="{{access_link}}">Logout</a></div>
+							</ul>
+						</div>
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+	</header>
+	<body>
+		<div class="title">
+			<p class="tittletext">Error</p>
+		</div>
+		<div id="error">
+			{{msg}}
+		</div>
+		<div id="login">
+			<a href="/" id="loginlink2">Click here to return to the home page</a>
+		</div>
+	</body>
 </html>
