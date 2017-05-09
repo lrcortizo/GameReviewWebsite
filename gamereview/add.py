@@ -42,13 +42,17 @@ class AddHandler(webapp2.RequestHandler):
             game.picture = self.request.get("picture").strip()
             game.web = self.request.get("web").strip()
             game.company = self.request.get("company").strip()
-
-            if len(game.name) < 1:
-                self.redirect("/error?msg=" + "Modification aborted: serie's name is mandatory")
+            games = Game.query()
+            label = False
+            for g in games:
+                if g.name == game.name:
+                    label = True
+            if label == True:
+                self.redirect("/error?msg=Game already exists")
                 return
-
-            game.put()
-            time.sleep(1)
+            else:
+                game.put()
+                time.sleep(1)
             self.redirect("/usergames")
         else:
             self.redirect("/")
