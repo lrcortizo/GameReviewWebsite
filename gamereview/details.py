@@ -35,7 +35,8 @@ class DetailsHandler(webapp2.RequestHandler):
                 return
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
-            comments = Comment.query(Comment.game == game.id).order(Comment.date)
+            comments = Comment.query(Comment.game == game.key).order(Comment.date)
+                
             template_values = {
                 "user_name": user_name,
                 "access_link": access_link,

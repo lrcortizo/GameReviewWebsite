@@ -68,7 +68,7 @@ class AddCommentHandler(webapp2.RequestHandler):
                 return
 
             comment = Comment()
-            comment.game = game.id
+            comment.game = game.key
             comment.user = user.user_id()
             comment.comment = self.request.get("comment").strip()
             comment.numHours = int(self.request.get("hours").strip())

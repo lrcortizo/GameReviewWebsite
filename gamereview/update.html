@@ -22,8 +22,6 @@
 		function chk() {
 			var toret = true;
 			var edName = document.getElementById( "edName" );
-			var edSeason = document.getElementById( "edSeason" );
-			var edEpisode = document.getElementById( "edEpisode" );
 
 			hideError();
 
@@ -31,20 +29,6 @@
 				showError( "Name is mandatory" );
 				toret = false;
 			}
-
-			var season = parseInt( edSeason.value, 10 );
-			var episode = parseInt( edEpisode.value, 10 );
-
-			if ( season < 1 ) {
-				showError( "Season must be an integer greater than 0" );
-				toret = false;
-			}
-
-			if ( episode < 1 ) {
-				showError( "Episode must be an integer greater than 0" );
-				toret = false;
-			}
-
 			return toret;
 		}
 	</script>
