@@ -1,8 +1,6 @@
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-from comment import Comment
-
 import time
 import os
 import webapp2
