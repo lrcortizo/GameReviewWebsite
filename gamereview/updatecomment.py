@@ -13,6 +13,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class UpdateCommentHandler(webapp2.RequestHandler):
     def get(self):
+
+        # Se comprueba que hay un id para el comentario
         try:
             id = self.request.GET['id']
         except:
@@ -27,7 +29,7 @@ class UpdateCommentHandler(webapp2.RequestHandler):
         if user != None:
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
-
+            # Se obtiene el id del comentario
             try:
                 comment = ndb.Key(urlsafe = id).get()
             except:
@@ -46,6 +48,7 @@ class UpdateCommentHandler(webapp2.RequestHandler):
             self.redirect("/")
 
     def post(self):
+        #Se comprueba que hay un id para el comentario
         try:
             id = self.request.GET['id']
         except:
@@ -58,12 +61,14 @@ class UpdateCommentHandler(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if user != None:
+            # Se obtiene el id del comentario
             try:
                 comment = ndb.Key(urlsafe = id).get()
             except:
                 self.redirect("/error?msg=Comment key does not exist")
                 return
 
+            # Se obtienen los campos del formulario y se pasan al formato correcto
             comment.comment = self.request.get("comment").strip()
             comment.numHours = int(self.request.get("hours").strip())
             if "yes" == self.request.get("finished").strip():
@@ -72,8 +77,10 @@ class UpdateCommentHandler(webapp2.RequestHandler):
                 comment.finished = False
             comment.punctuation = int(self.request.get("punctuation").strip())
 
+            #Se actualiza
             comment.put()
             time.sleep(1)
+
             self.redirect("/")
         else:
             self.redirect("/")

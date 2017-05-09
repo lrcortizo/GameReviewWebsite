@@ -16,6 +16,8 @@ class ErrorHandler(webapp2.RequestHandler):
         if user != None:
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
+
+            #Se comprueba que hay msg y se obtiene
             try:
                 msg = self.request.GET['msg']
             except:

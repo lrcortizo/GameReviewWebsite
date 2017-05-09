@@ -15,6 +15,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class DetailsHandler(webapp2.RequestHandler):
     def get(self):
+
+        #Se comprueba que se corresponde con el id de un juego
         try:
             id = self.request.GET['id']
         except:
@@ -27,6 +29,7 @@ class DetailsHandler(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if user != None:
+            # Se obtiene el juego
             try:
                 game = ndb.Key(urlsafe=id).get()
             except:
@@ -34,6 +37,8 @@ class DetailsHandler(webapp2.RequestHandler):
                 return
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
+
+            #Se extraen los comentarios correspondientes
             comments = Comment.query(Comment.game == game.key).order(-Comment.date)
                 
             template_values = {

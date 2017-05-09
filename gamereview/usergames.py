@@ -26,6 +26,8 @@ class UserGamesHandler(webapp2.RequestHandler):
         else:
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
+
+            #Se obtienen los juegos correspondientes al usuario actual
             games = Game.query(Game.user == user.user_id()).order(-Game.date)
 
             template_values = {

@@ -13,6 +13,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class RemoveCommentHandler(webapp2.RequestHandler):
     def get(self):
+
+        # Se comprueba que el id del comentario
         try:
             id = self.request.GET['id']
         except:
@@ -24,13 +26,18 @@ class RemoveCommentHandler(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if user != None:
+
+            #Se obtiene el comentario
             try:
                 comment = ndb.Key(urlsafe = id).get()
             except:
                 self.redirect("/error?msg=Comment key was not found")
                 return
+
+            #El comentario se elimina
             comment.key.delete()
             time.sleep(1)
+
             self.redirect("/")
         else:
             self.redirect("/")

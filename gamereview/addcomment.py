@@ -15,6 +15,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class AddCommentHandler(webapp2.RequestHandler):
     def get(self):
+
+        # Se comprueba que se corresponde con el id de un juego
         try:
             id = self.request.GET['id']
         except:
@@ -47,6 +49,8 @@ class AddCommentHandler(webapp2.RequestHandler):
             self.redirect("/")
 
     def post(self):
+
+        # Se comprueba que se corresponde con el id de un juego
         try:
             id = self.request.GET['id']
         except:
@@ -59,12 +63,14 @@ class AddCommentHandler(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if user != None:
+            #Se obtiene el juego al que corresponde
             try:
                 game = ndb.Key(urlsafe = id).get()
             except:
                 self.redirect("/error?msg=Game key doesn't exist")
                 return
 
+            #Se crea el comentario y se extraen los campos del formulario
             comment = Comment()
             comment.game = game.key
             comment.user = user.user_id()
@@ -76,8 +82,10 @@ class AddCommentHandler(webapp2.RequestHandler):
                 comment.finished = False
             comment.punctuation = int(self.request.get("punctuation").strip())
 
+            #Se almacena el comentario
             comment.put()
             time.sleep(1)
+
             self.redirect("/details?id="+game.key.urlsafe())
         else:
             self.redirect("/")

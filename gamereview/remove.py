@@ -13,6 +13,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class RemoveHandler(webapp2.RequestHandler):
     def get(self):
+        #Se comprueba que el id del juego
         try:
             id = self.request.GET['id']
         except:
@@ -24,13 +25,17 @@ class RemoveHandler(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if user != None:
+            # Se obtiene el id del juego
             try:
                 game = ndb.Key(urlsafe = id).get()
             except:
                 self.redirect("/error?msg=Game key was not found")
                 return
+
+            #Se borra el juego
             game.key.delete()
             time.sleep(1)
+
             self.redirect("/usergames")
         else:
             self.redirect("/")

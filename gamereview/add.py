@@ -34,6 +34,8 @@ class AddHandler(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if user != None:
+
+            #Crear juego y extraer variables formulario
             game = Game()
             game.name = self.request.get("name").strip()
             game.user = user.user_id()
@@ -41,17 +43,22 @@ class AddHandler(webapp2.RequestHandler):
             game.picture = self.request.get("picture").strip()
             game.web = self.request.get("web").strip()
             game.company = self.request.get("company").strip()
+
+            #Comprobar si existe ya el juego
             games = Game.query()
             label = False
             for g in games:
                 if g.name == game.name:
                     label = True
+
+            #Si existe: error, sino se almacena
             if label == True:
                 self.redirect("/error?msg=Game already exists")
                 return
             else:
                 game.put()
                 time.sleep(1)
+
             self.redirect("/usergames")
         else:
             self.redirect("/")

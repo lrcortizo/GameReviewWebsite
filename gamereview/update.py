@@ -13,6 +13,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class UpdateHandler(webapp2.RequestHandler):
     def get(self):
+
+        #Se comprueba que hay un id para el juego
         try:
             id = self.request.GET['id']
         except:
@@ -27,7 +29,7 @@ class UpdateHandler(webapp2.RequestHandler):
         if user != None:
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
-
+            # Se obtiene el id del juego
             try:
                 game = ndb.Key(urlsafe = id).get()
             except:
@@ -46,6 +48,7 @@ class UpdateHandler(webapp2.RequestHandler):
             self.redirect("/")
 
     def post(self):
+        #Se comprueba que hay un id para el juego
         try:
             id = self.request.GET['id']
         except:
@@ -58,18 +61,21 @@ class UpdateHandler(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if user != None:
+            # Se obtiene el id del juego
             try:
                 game = ndb.Key(urlsafe = id).get()
             except:
                 self.redirect("/error?msg=Game key does not exist")
                 return
 
+            # Se obtienen los campos del formulario
             game.name = self.request.get("name").strip()
             game.description = self.request.get("description").strip()
             game.picture = self.request.get("picture").strip()
             game.web = self.request.get("web").strip()
             game.company = self.request.get("company").strip()
 
+            #Se modifica
             game.put()
             time.sleep(1)
             self.redirect("/usergames")
