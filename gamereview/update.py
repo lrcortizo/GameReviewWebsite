@@ -42,7 +42,7 @@ class UpdateHandler(webapp2.RequestHandler):
     			"game": game,
     		}
 
-            template = JINJA_ENVIRONMENT.get_template( "update.html" )
+            template = JINJA_ENVIRONMENT.get_template( "/views/update.html" )
             self.response.write(template.render(template_values));
         else:
             self.redirect("/")

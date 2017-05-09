@@ -29,5 +29,5 @@ class ErrorHandler(webapp2.RequestHandler):
         else:
             self.redirect("/")
 
-        template = JINJA_ENVIRONMENT.get_template( "error.html" )
+        template = JINJA_ENVIRONMENT.get_template( "/views/error.html" )
         self.response.write(template.render(template_values));

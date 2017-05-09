@@ -61,7 +61,7 @@ class MainHandler(webapp2.RequestHandler):
 
             }
 
-	template = JINJA_ENVIRONMENT.get_template( "index.html" )
+	template = JINJA_ENVIRONMENT.get_template( "/views/index.html" )
 	self.response.write(template.render(template_values));
 
 app = webapp2.WSGIApplication([

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8"/>
-		<link rel="stylesheet" href="style.css">
-		<title>Game Review</title>
-		<script type="text/javascript">
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Game Review</title>
+			<script type="text/javascript">
 			function hideError() {
 				document.getElementById( "dvError" ).style.display = "none";
 			}
@@ -81,55 +81,48 @@
 				return true;
 			}
 		</script>
-	</head>
-	<header>
-		<div class="headercontent">
-			<a  href="/"><img id="logo" src="./res/logo.png"></a>
-		</div>
-		<div class="headercontent">
-			<a id="indexlink" href="/">Game Review</a>
-		</div>
-		<div class="headercontent">
-			{% if user_name == "Please login" %}
-				<a href="{{access_link}}">Login</a>
-			{% else %}
-				<div class="profile">
-					<ul id="nav">
-						<div class="menu">{{user_name}}</br>▼
-							<ul>
-								<div class="submenu"><a href="/usergames">My games</a></div>
-								<div class="submenu"><a href="{{access_link}}">Logout</a></div>
-							</ul>
-						</div>
-					</ul>
-				</div>
-			{% endif %}
-		</div>
-	</header>
-	<body>
-		<div class="title">
-			<p class="tittletext">Modify Comment</p>
-		</div>
-		<div id="dvError"></div>
-		<form class="gameform"
-			onsubmit="javascript: return validate();"
-			action="/updatecomment?id={{comment.key.urlsafe()}}" method="post">
-			Comment: </br><input type="textarea" name="comment" id="edComment" size="80"
-					value="{{comment.comment}}">
-			</br></br>
-			Played hours: </br><input type="text" name="hours" id="edHours" size="80"
-					value="{{comment.numHours}}">
-			</br></br>
-			Game finished: </br>Yes<input type="radio" name="finished" value="yes"/>
-			No<input type="radio" name="finished" value="no"/>
-			</br></br>
-			Punctuation(1 to 5): </br><input type="text" name="punctuation" id="edPunctuation" size="1" value="{{comment.punctuation}}"/>
-			</br></br>
-				<input type="image"
-					class="button"
-					title="modify" alt="modify"
-					width="16px" height="16px" src="/res/update.svg"
-					onsubmit="javascript: document.gameform.submit()"/>
-		</form>
-	</body>
+</head>
+<header>
+	<div class="headercontent">
+		<a  href="/img"><img id="logo" src="./res/logo.png"></a>
+	</div>
+	<div class="headercontent">
+		<a id="indexlink" href="/">Game Review</a>
+	</div>
+	<div class="headercontent">
+		{% if user_name == "Please login" %}
+			<a href="{{access_link}}">Login</a>
+		{% else %}
+			<div class="profile">
+				<ul id="nav">
+  	        		<div class="menu">{{user_name}}</br>▼
+						<ul>
+							<div class="submenu"><a href="/usergames">My games</a></div>
+							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
+              			</ul>
+  	        		</div>
+  	      		</ul>
+			</div>
+		{% endif %}
+	</div>
+</header>
+<body>
+	<div class="title">
+		<p class="tittletext">Add Comment</p>
+	</div>
+	<div id="dvError"></div>
+	<form class="gameform" onsubmit="javascript: return validate();" action="/addcomment?id={{game.key.urlsafe()}}" method="post">
+		Comment: </br><input type="textarea" name="comment" id="edComment" size="80"/>
+		</br></br>
+		Played hours: </br><input type="text" name="hours" id="edHours" size="3"/>
+		</br></br>
+		Game finished: </br>Yes<input type="radio" name="finished" value="yes"/>
+		No<input type="radio" name="finished" value="no"/>
+		</br></br>
+		Punctuation(1 to 5): </br><input type="text" name="punctuation" id="edPunctuation" size="1"/>
+		</br></br>
+		<input class="buttontext" type="submit" title="add" alt="add"  value="Add comment" onsubmit="javascript: document.gameform.submit()">
+        </br></br>
+	</form>
+</body>
 </html>

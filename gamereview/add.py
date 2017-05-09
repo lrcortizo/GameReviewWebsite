@@ -26,7 +26,7 @@ class AddHandler(webapp2.RequestHandler):
                 "access_link": access_link,
             }
 
-            template = JINJA_ENVIRONMENT.get_template("add.html")
+            template = JINJA_ENVIRONMENT.get_template("/views/add.html")
             self.response.write(template.render(template_values));
         else:
             self.redirect("/")

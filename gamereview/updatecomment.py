@@ -42,7 +42,7 @@ class UpdateCommentHandler(webapp2.RequestHandler):
     			"comment": comment,
     		}
 
-            template = JINJA_ENVIRONMENT.get_template( "updatecomment.html" )
+            template = JINJA_ENVIRONMENT.get_template( "/views/updatecomment.html" )
             self.response.write(template.render(template_values));
         else:
             self.redirect("/")

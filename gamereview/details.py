@@ -45,7 +45,7 @@ class DetailsHandler(webapp2.RequestHandler):
                 "iduser": user.user_id(),
             }
 
-            template = JINJA_ENVIRONMENT.get_template("details.html")
+            template = JINJA_ENVIRONMENT.get_template("/views/details.html")
             self.response.write(template.render(template_values));
         else:
             self.redirect("/")

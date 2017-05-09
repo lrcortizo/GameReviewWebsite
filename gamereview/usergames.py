@@ -38,5 +38,5 @@ class UserGamesHandler(webapp2.RequestHandler):
 
             }
 
-        template = JINJA_ENVIRONMENT.get_template("usergames.html")
+        template = JINJA_ENVIRONMENT.get_template("/views/usergames.html")
         self.response.write(template.render(template_values));
