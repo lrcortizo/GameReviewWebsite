@@ -14,12 +14,18 @@ indexes:
   properties:
   - name: game
   - name: date
-    direction: desc
 
 - kind: Comment
   properties:
   - name: game
   - name: date
+    direction: desc
+
+- kind: Game
+  properties:
+  - name: user
+  - name: date
+    direction: desc
 
 - kind: Game
   properties:

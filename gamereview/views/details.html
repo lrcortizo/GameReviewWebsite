@@ -73,8 +73,10 @@
 		<b class="titles">Punctuation: </b></br>{{comment.punctuation}}
 		</br></br>
 		{% if comment.user == iduser %}
-		<a href="/updatecomment?id={{comment.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
-		<a href="/removecomment?id={{comment.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
+		<a href="/updatecomment?id={{comment.key.urlsafe()}}">
+			<img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
+		<a href="/removecomment?id={{comment.key.urlsafe()}}">
+			<img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
 		{% endif %}
 	</div>
 	{% endfor %}
