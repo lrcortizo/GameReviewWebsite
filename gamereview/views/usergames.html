@@ -1,60 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="../css/style.css">
-	<title>Game Review</title>
-</head>
-<header>
-	<div class="headercontent">
-		<a  href="/"><img id="logo" src="./img/logo.png"></a>
-	</div>
-	<div class="headercontent">
-		<a id="indexlink" href="/">Game Review</a>
-	</div>
-	<div class="headercontent">
-		{% if user_name == "Please login" %}
-			<a href="{{access_link}}">Login</a>
-		{% else %}
-			<div class="profile">
-				<ul id="nav">
-  	        		<div class="menu">{{user_name}}</br>▼
-                        <ul>
-							<div class="submenu"><a href="/usergames">My games</a></div>
-							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
-              			</ul>
-  	        		</div>
-  	      		</ul>
-			</div>
-		{% endif %}
-	</div>
-</header>
-<body>
-	<div id="add">
-		<a href="/add"><img height="24px" width="24px" title="add" class="button" src="/img/add.svg"/></a>
-	</div>
-	<div class="games">
-		{% for game in games %}
-			<div class="game">
-				<div class="gameimg">
-					<a href="/details?id={{game.key.urlsafe()}}"><img class="img" src="{{game.picture}}"></a>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="../css/style.css">
+		<title>Game Review</title>
+	</head>
+	{% include '/views/header.html' %}
+	<body>
+		<div id="add">
+			<a href="/add"><img height="24px" width="24px" title="add" class="button" src="/img/add.svg"/></a>
+		</div>
+		<div class="games">
+			{% for game in games %}
+				<div class="game">
+					<div class="gameimg">
+						<a href="/details?id={{game.key.urlsafe()}}"><img class="img" src="{{game.picture}}"></a>
+					</div>
+					<div class ="gamedescription">
+						<b class="titles">Name:</b>
+						<a class="link" href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a><br>
+						<b class="titles">Company:</b>
+						{{game.company}}</br>
+						<b class="titles">Date:</b>
+						{{game.date}}<br>
+						<b class="titles">Web:</b>
+						<a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a><br>
+						<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
+						<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
+					</div>
 				</div>
-				<div class ="gamedescription">
-					<b class="titles">Name:</b>
-					<a class="link" href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a><br>
-					<b class="titles">Company:</b>
-					{{game.company}}</br>
-					<b class="titles">Date:</b>
-					{{game.date}}<br>
-					<b class="titles">Web:</b>
-					<a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a><br>
-					<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
-					<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
-				</div>
-			</div>
-			<br/>
-		{% endfor %}
+				<br/>
+			{% endfor %}
 
-	</div>
-</body>
+		</div>
+	</body>
 </html>

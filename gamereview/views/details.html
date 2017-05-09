@@ -1,84 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="../css/style.css">
-	<title>Game Review</title>
-</head>
-<header>
-	<div class="headercontent">
-		<a  href="/"><img id="logo" src="./img/logo.png"></a>
-	</div>
-	<div class="headercontent">
-		<a id="indexlink" href="/">Game Review</a>
-	</div>
-	<div class="headercontent">
-		{% if user_name == "Please login" %}
-			<a href="{{access_link}}">Login</a>
-		{% else %}
-			<div class="profile">
-				<ul id="nav">
-  	        		<div class="menu">{{user_name}}</br>▼
-						<ul>
-							<div class="submenu"><a href="/usergames">My games</a></div>
-							<div class="submenu"><a href="{{access_link}}">Logout</a></div>
-              			</ul>
-  	        		</div>
-  	      		</ul>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="../css/style.css">
+		<title>Game Review</title>
+	</head>
+	{% include '/views/header.html' %}
+	<body>
+		<div class="title">
+			<p class="tittletext">{{game.name}}</p>
+		</div>
+		<div class="game">
+			<div class="gameimg">
+				<img class="imgdetails" src="{{game.picture}}">
 			</div>
-		{% endif %}
-	</div>
-</header>
-<body>
-	<div class="title">
-		<p class="tittletext">{{game.name}}</p>
-	</div>
-	<div class="game">
-		<div class="gameimg">
-			<img class="imgdetails" src="{{game.picture}}">
+			<div class ="gamedescription">
+				<b class="titles">Name: </b></br>{{game.name}}
+			</br></br>
+			<b class="titles">Description: </b></br>{{game.description}}
+			</br></br>
+			<b class="titles">Company: </b></br>{{game.web}}
+			</br></br>
+			<b class="titles">Web: </b></br><a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a>
+			</br></br>
+			<b class="titles">Upload date: </b></br>{{game.date}}
+			</br></br>
+			{% if game.user == iduser %}
+				<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
+				<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
+			{% endif %}
+			</div>
 		</div>
-		<div class ="gamedescription">
-			<b class="titles">Name: </b></br>{{game.name}}
-		</br></br>
-		<b class="titles">Description: </b></br>{{game.description}}
-		</br></br>
-		<b class="titles">Company: </b></br>{{game.web}}
-		</br></br>
-		<b class="titles">Web: </b></br><a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a>
-		</br></br>
-		<b class="titles">Upload date: </b></br>{{game.date}}
-		</br></br>
-		{% if game.user == iduser %}
-			<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
-			<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
-		{% endif %}
+		<div id="comment">
+			<a href="/addcomment?id={{game.key.urlsafe()}}"><button class="buttontext">Add comment</button></a>
+			</br></br>
 		</div>
-	</div>
-	<div id="comment">
-		<a href="/addcomment?id={{game.key.urlsafe()}}"><button class="buttontext">Add comment</button></a>
-		</br></br>
-	</div>
-	{% for comment in comments %}
-	<div class="gameform">
-		<b class="titles">Comment: </b></br>{{comment.comment}}
-		</br></br>
-		<b class="titles">Played hours: </b></br>{{comment.numHours}}
-		</br></br>
-		{% if comment.finished == True %}
-		<b class="titles">Finished: </b></br>Yes
-		{% else %}
-		<b class="titles">Finished: </b></br>No
-		{% endif %}
-		</br></br>
-		<b class="titles">Punctuation: </b></br>{{comment.punctuation}}
-		</br></br>
-		{% if comment.user == iduser %}
-		<a href="/updatecomment?id={{comment.key.urlsafe()}}">
-			<img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
-		<a href="/removecomment?id={{comment.key.urlsafe()}}">
-			<img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
-		{% endif %}
-	</div>
-	{% endfor %}
-</body>
+		{% for comment in comments %}
+		<div class="gameform">
+			<b class="titles">Comment: </b></br>{{comment.comment}}
+			</br></br>
+			<b class="titles">Played hours: </b></br>{{comment.numHours}}
+			</br></br>
+			{% if comment.finished == True %}
+			<b class="titles">Finished: </b></br>Yes
+			{% else %}
+			<b class="titles">Finished: </b></br>No
+			{% endif %}
+			</br></br>
+			<b class="titles">Punctuation: </b></br>{{comment.punctuation}}
+			</br></br>
+			{% if comment.user == iduser %}
+			<a href="/updatecomment?id={{comment.key.urlsafe()}}">
+				<img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
+			<a href="/removecomment?id={{comment.key.urlsafe()}}">
+				<img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</body>
 </html>

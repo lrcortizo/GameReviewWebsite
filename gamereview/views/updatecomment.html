@@ -82,30 +82,7 @@
 			}
 		</script>
 	</head>
-	<header>
-		<div class="headercontent">
-			<a  href="/"><img id="logo" src="./img/logo.png"></a>
-		</div>
-		<div class="headercontent">
-			<a id="indexlink" href="/">Game Review</a>
-		</div>
-		<div class="headercontent">
-			{% if user_name == "Please login" %}
-				<a href="{{access_link}}">Login</a>
-			{% else %}
-				<div class="profile">
-					<ul id="nav">
-						<div class="menu">{{user_name}}</br>▼
-							<ul>
-								<div class="submenu"><a href="/usergames">My games</a></div>
-								<div class="submenu"><a href="{{access_link}}">Logout</a></div>
-							</ul>
-						</div>
-					</ul>
-				</div>
-			{% endif %}
-		</div>
-	</header>
+	{% include '/views/header.html' %}
 	<body>
 		<div class="title">
 			<p class="tittletext">Modify Comment</p>
