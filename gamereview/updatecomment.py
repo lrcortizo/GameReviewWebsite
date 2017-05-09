@@ -1,6 +1,7 @@
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
+from game import Game
 import time
 import os
 import webapp2
@@ -81,6 +82,8 @@ class UpdateCommentHandler(webapp2.RequestHandler):
             comment.put()
             time.sleep(1)
 
-            self.redirect("/")
+            #Redireccion
+            game = Game.query(comment.game == Game.key).get()
+            self.redirect("/details?id=" + game.key.urlsafe())
         else:
             self.redirect("/")
