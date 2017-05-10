@@ -24,6 +24,7 @@ from update import UpdateHandler
 from remove import RemoveHandler
 from details import DetailsHandler
 from usergames import UserGamesHandler
+from usercomments import UserCommentsHandler
 from addcomment import AddCommentHandler
 from updatecomment import UpdateCommentHandler
 from removecomment import RemoveCommentHandler
@@ -71,6 +72,7 @@ app = webapp2.WSGIApplication([
     ("/error", ErrorHandler),
     ("/details", DetailsHandler),
     ("/usergames", UserGamesHandler),
+    ("/usercomments", UserCommentsHandler),
     ("/addcomment", AddCommentHandler),
     ("/updatecomment", UpdateCommentHandler),
     ("/removecomment", RemoveCommentHandler),

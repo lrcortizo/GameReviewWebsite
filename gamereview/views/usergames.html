@@ -8,7 +8,7 @@
 	{% include '/views/header.html' %}
 	<body>
 		<div id="add">
-			<a href="/add"><img height="24px" width="24px" title="add" class="button" src="/img/add.svg"/></a>
+			<a href="/add"><img height="24px" width="24px" title="Add game" class="button" src="/img/add.svg"/></a>
 		</div>
 		<div class="games">
 			{% for game in games %}
@@ -25,8 +25,8 @@
 						{{game.date}}<br>
 						<b class="titles">Web:</b>
 						<a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a><br>
-						<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
-						<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
+						<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="Modify game" class="button" src="/img/update.svg"/></a>
+						<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="Delete game" class="button" src="/img/remove.svg"/></a>
 					</div>
 				</div>
 				<br/>

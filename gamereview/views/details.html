@@ -43,8 +43,8 @@
 			</script>
 			</br></br></br>
 			{% if game.user == iduser %}
-				<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
-				<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
+				<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="Modify game" class="button" src="/img/update.svg"/></a>
+				<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="Delete game" class="button" src="/img/remove.svg"/></a>
 			{% endif %}
 			</div>
 		</div>
@@ -85,9 +85,9 @@
 			</br></br></br>
 			{% if comment.user == iduser %}
 			<a href="/updatecomment?id={{comment.key.urlsafe()}}">
-				<img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
+				<img width="16px" height="16px" title="Modify comment" class="button" src="/img/update.svg"/></a>
 			<a href="/removecomment?id={{comment.key.urlsafe()}}">
-				<img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
+				<img width="16px" height="16px" title="Delete comment" class="button" src="/img/remove.svg"/></a>
 			{% endif %}
 		</div>
 		{% endfor %}
