@@ -15,13 +15,11 @@
 					</div>
 					<div class ="gamedescription">
 						<b class="titles">Name:</b>
-						<a class="link" href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a></br>
-						<b class="titles">Company:</b>
-						{{game.company}}</br>
+						<a class="link" href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a></br></br>
+						<b class="titles">Upload by:</b>
+						{{game.nameUser}}</br></br>
 						<b class="titles">Upload date:</b>
-						{{game.date}}</br>
-						<b class="titles">Web:</b>
-						<a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a></br>
+						{{game.date}}</br></br>
 						{% if game.user == iduser %}
 						<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
 						<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
