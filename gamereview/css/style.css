@@ -186,16 +186,18 @@ header {
 
 #dvError {
   display: none;
-  color: white;
-  background-color: #C50000;
+  color: #C50000;
+  background-color: black;
   margin-left: 20px;
   font-size: 16pt;
   font-weight: bold;
 }
 
+/*Error view*/
+
 #error {
-  color: white;
-  background-color: #C50000;
+  color: #C50000;
+  background-color: black;
   margin-left: 20px;
   font-size: 16pt;
   font-weight: bold;
@@ -219,7 +221,7 @@ header {
 
 #login {
     position: relative;
-    margin-top: 15%;
+    margin-top: 5%;
     margin-left: 35%;
     text-align: center;
     width: 23%;
