@@ -25,9 +25,9 @@ indexes:
   properties:
   - name: user
   - name: date
-    direction: desc
 
 - kind: Game
   properties:
   - name: user
   - name: date
+    direction: desc

@@ -74,13 +74,14 @@ class AddCommentHandler(webapp2.RequestHandler):
             comment = Comment()
             comment.game = game.key
             comment.user = user.user_id()
+            comment.nameUser = user.nickname()
             comment.comment = self.request.get("comment").strip()
             comment.numHours = int(self.request.get("hours").strip())
             if "yes" == self.request.get("finished").strip():
                 comment.finished = True
             else:
                 comment.finished = False
-            comment.punctuation = int(self.request.get("punctuation").strip())
+            comment.punctuation = int(self.request.get("star").strip())
 
             #Se almacena el comentario
             comment.put()

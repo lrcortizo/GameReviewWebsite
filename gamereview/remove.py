@@ -1,6 +1,8 @@
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
+from comment import Comment
+
 import time
 import os
 import webapp2
@@ -31,6 +33,12 @@ class RemoveHandler(webapp2.RequestHandler):
             except:
                 self.redirect("/error?msg=Game key was not found")
                 return
+
+            # Borrar todos los comentarios de ese juegp
+            comments = Comment.query(Comment.game == game.key)
+            for c in comments:
+                c.key.delete()
+                time.sleep(1)
 
             #Se borra el juego
             game.key.delete()
