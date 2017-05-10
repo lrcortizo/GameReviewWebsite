@@ -39,27 +39,26 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
+
+        # Comprobacion usuario
         if user == None:
             user_name = "Please login"
             access_link = users.create_login_url("/")
-            template_values = {
-                "user_name": user_name,
-                "access_link": access_link,
-            }
-
-
+            iduser = None
         else:
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
-            games = Game.query().order(-Game.date)
+            iduser = user.user_id()
 
-            template_values = {
-                "user_name": user_name,
-                "access_link": access_link,
-                "games": games,
-                "iduser": user.user_id(),
+        games = Game.query().order(-Game.date)
 
-            }
+        template_values = {
+            "user_name": user_name,
+            "access_link": access_link,
+            "games": games,
+            "iduser": iduser,
+
+        }
 
 	template = JINJA_ENVIRONMENT.get_template( "/views/index.html" )
 	self.response.write(template.render(template_values));

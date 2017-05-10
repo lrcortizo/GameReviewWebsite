@@ -7,36 +7,29 @@
 	</head>
 	{% include '/views/header.html' %}
 	<body>
-		{% if user_name == "Please login" %}
-			<div id="login">
-				</br>
-				<a id="loginlink2" href="{{access_link}}">Please login to see the content</a>
-			</div>
-		{% else %}
-			<div class="games">
-				{% for game in games %}
-					<div class="game">
-						<div class="gameimg">
-							<a href="/details?id={{game.key.urlsafe()}}"><img class="img" src="{{game.picture}}"></a>
-						</div>
-						<div class ="gamedescription">
-							<b class="titles">Name:</b>
-							<a class="link" href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a></br>
-							<b class="titles">Company:</b>
-							{{game.company}}</br>
-							<b class="titles">Upload date:</b>
-							{{game.date}}</br>
-							<b class="titles">Web:</b>
-							<a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a></br>
-							{% if game.user == iduser %}
-							<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
-							<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
-							{% endif %}
-						</div>
+		<div class="games">
+			{% for game in games %}
+				<div class="game">
+					<div class="gameimg">
+						<a href="/details?id={{game.key.urlsafe()}}"><img class="img" src="{{game.picture}}"></a>
 					</div>
-					<br/>
-				{% endfor %}
-			</div>
-		{% endif %}
+					<div class ="gamedescription">
+						<b class="titles">Name:</b>
+						<a class="link" href="/details?id={{game.key.urlsafe()}}">{{game.name}}</a></br>
+						<b class="titles">Company:</b>
+						{{game.company}}</br>
+						<b class="titles">Upload date:</b>
+						{{game.date}}</br>
+						<b class="titles">Web:</b>
+						<a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a></br>
+						{% if game.user == iduser %}
+						<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
+						<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
+						{% endif %}
+					</div>
+				</div>
+				<br/>
+			{% endfor %}
+		</div>
 	</body>
 </html>

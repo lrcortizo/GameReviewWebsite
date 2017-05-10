@@ -16,7 +16,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class DetailsHandler(webapp2.RequestHandler):
     def get(self):
 
-        #Se comprueba que se corresponde con el id de un juego
+        # Se comprueba que se corresponde con el id de un juego
         try:
             id = self.request.GET['id']
         except:
@@ -28,37 +28,47 @@ class DetailsHandler(webapp2.RequestHandler):
 
         user = users.get_current_user()
 
+        # Comprobacion usuario
         if user != None:
-            # Se obtiene el juego
-            try:
-                game = ndb.Key(urlsafe=id).get()
-            except:
-                self.redirect("/error?msg=Game key doesn't exist")
-                return
+            iduser = user.user_id()
             user_name = user.nickname()
             access_link = users.create_logout_url("/")
 
-            #Se extraen los comentarios correspondientes
-            comments = Comment.query(Comment.game == game.key).order(-Comment.date)
+        else:
+            iduser = None
+            user_name = "Please login"
+            access_link = users.create_login_url("/")
 
-            #Calcular la media
-            v = 0
-            cont = 0
-            for c in comments:
-                v += c.punctuation
-                cont += 1
+        # Se obtiene el juego
+        try:
+            game = ndb.Key(urlsafe=id).get()
+        except:
+            self.redirect("/error?msg=Game key doesn't exist")
+            return
+
+
+        #Se extraen los comentarios correspondientes
+        comments = Comment.query(Comment.game == game.key).order(-Comment.date)
+
+        #Calcular la media
+        v = 0
+        cont = 0
+        for c in comments:
+            v += c.punctuation
+            cont += 1
+        if cont == 0:
+            mean = 0
+        else:
             mean = v/cont
 
-            template_values = {
-                "user_name": user_name,
-                "access_link": access_link,
-                "game": game,
-                "comments": comments,
-                "iduser": user.user_id(),
-                "mean": mean,
-            }
+        template_values = {
+            "user_name": user_name,
+            "access_link": access_link,
+            "game": game,
+            "comments": comments,
+            "iduser": iduser,
+            "mean": mean,
+        }
 
-            template = JINJA_ENVIRONMENT.get_template("/views/details.html")
-            self.response.write(template.render(template_values));
-        else:
-            self.redirect("/")
+        template = JINJA_ENVIRONMENT.get_template("/views/details.html")
+        self.response.write(template.render(template_values));
