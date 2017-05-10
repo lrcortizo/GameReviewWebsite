@@ -76,7 +76,7 @@ class UpdateCommentHandler(webapp2.RequestHandler):
                 comment.finished = True
             else:
                 comment.finished = False
-            comment.punctuation = int(self.request.get("stars").strip())
+            comment.punctuation = int(self.request.get("star"))
 
             #Se actualiza
             comment.put()

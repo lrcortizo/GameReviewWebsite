@@ -40,13 +40,22 @@ class DetailsHandler(webapp2.RequestHandler):
 
             #Se extraen los comentarios correspondientes
             comments = Comment.query(Comment.game == game.key).order(-Comment.date)
-                
+
+            #Calcular la media
+            v = 0
+            cont = 0
+            for c in comments:
+                v += c.punctuation
+                cont += 1
+            mean = v/cont
+
             template_values = {
                 "user_name": user_name,
                 "access_link": access_link,
                 "game": game,
                 "comments": comments,
                 "iduser": user.user_id(),
+                "mean": mean,
             }
 
             template = JINJA_ENVIRONMENT.get_template("/views/details.html")

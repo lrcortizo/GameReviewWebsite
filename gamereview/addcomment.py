@@ -81,7 +81,8 @@ class AddCommentHandler(webapp2.RequestHandler):
                 comment.finished = True
             else:
                 comment.finished = False
-            comment.punctuation = int(self.request.get("star").strip())
+
+            comment.punctuation = int(self.request.get("star"))
 
             #Se almacena el comentario
             comment.put()

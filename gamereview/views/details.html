@@ -15,11 +15,9 @@
 				<img class="imgdetails" src="{{game.picture}}">
 			</div>
 			<div class ="gamedescription">
-			<b class="titles">Name: </b></br>{{game.name}}
-			</br></br>
 			<b class="titles">Description: </b></br>{{game.description}}
 			</br></br>
-			<b class="titles">Company: </b></br>{{game.web}}
+			<b class="titles">Company: </b></br>{{game.company}}
 			</br></br>
 			<b class="titles">Web: </b></br><a class="link" target="_blank" href="{{game.web}}">{{game.web}}</a>
 			</br></br>
@@ -27,6 +25,23 @@
 			</br></br>
 			<b class="titles">Upload by: </b></br>{{game.nameUser}}
 			</br></br>
+			<b class="titles">Mean punctuation: </b></br>
+			<div class="stars">
+				<input class="star star-1" id="{{game.key.id()}}star-5" type="radio" name="{{game.key.id()}}" value="5"/>
+				<label class="star star-1"></label>
+				<input class="star star-2" id="{{game.key.id()}}star-4" type="radio" name="{{game.key.id()}}" value="4"/>
+				<label class="star star-2"></label>
+				<input class="star star-3" id="{{game.key.id()}}star-3" type="radio" name="{{game.key.id()}}" value="3"/>
+				<label class="star star-3"></label>
+				<input class="star star-4" id="{{game.key.id()}}star-2" type="radio" name="{{game.key.id()}}" value="2"/>
+				<label class="star star-4"></label>
+				<input class="star star-5" id="{{game.key.id()}}star-1" type="radio" name="{{game.key.id()}}" value="1"/>
+				<label class="star star-5"></label>
+			</div>
+			<script type="text/javascript">
+			    document.getElementById( "{{game.key.id()}}star-{{mean}}" ).checked = true;
+			</script>
+			</br></br></br>
 			{% if game.user == iduser %}
 				<a href="/update?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
 				<a href="/remove?id={{game.key.urlsafe()}}"><img width="16px" height="16px" title="delete" class="button" src="/img/remove.svg"/></a>
@@ -51,8 +66,8 @@
 			<b class="titles">Finished: </b></br>No
 			{% endif %}
 			</br></br>
-			<b class="titles">Punctuation: </b></br>{{comment.punctuation}}
-			<div id="stars">
+			<b class="titles">Punctuation: </b></br>
+			<div class="stars">
 				<input class="star star-1" id="{{comment.key.id()}}star-5" type="radio" name="{{comment.key.id()}}" value="5"/>
 				<label class="star star-1"></label>
 				<input class="star star-2" id="{{comment.key.id()}}star-4" type="radio" name="{{comment.key.id()}}" value="4"/>
@@ -67,7 +82,7 @@
 			<script type="text/javascript">
 			    document.getElementById( "{{comment.key.id()}}star-{{comment.punctuation}}" ).checked = true;
 			</script>
-			</br></br>
+			</br></br></br>
 			{% if comment.user == iduser %}
 			<a href="/updatecomment?id={{comment.key.urlsafe()}}">
 				<img width="16px" height="16px" title="modify" class="button" src="/img/update.svg"/></a>
