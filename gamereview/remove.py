@@ -33,16 +33,19 @@ class RemoveHandler(webapp2.RequestHandler):
             except:
                 self.redirect("/error?msg=Game key was not found")
                 return
+            if user.user_id() == game.user:
+                # Borrar todos los comentarios de ese juegp
+                comments = Comment.query(Comment.game == game.key)
+                for c in comments:
+                    c.key.delete()
+                    time.sleep(1)
 
-            # Borrar todos los comentarios de ese juegp
-            comments = Comment.query(Comment.game == game.key)
-            for c in comments:
-                c.key.delete()
+                #Se borra el juego
+                game.key.delete()
                 time.sleep(1)
-
-            #Se borra el juego
-            game.key.delete()
-            time.sleep(1)
+            else:
+                self.redirect("/error?msg=You don't have premissions to do this")
+                return
 
             self.redirect("/usergames")
         else:

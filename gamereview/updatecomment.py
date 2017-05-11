@@ -69,18 +69,22 @@ class UpdateCommentHandler(webapp2.RequestHandler):
                 self.redirect("/error?msg=Comment key does not exist")
                 return
 
-            # Se obtienen los campos del formulario y se pasan al formato correcto
-            comment.comment = self.request.get("comment").strip()
-            comment.numHours = int(self.request.get("hours").strip())
-            if "yes" == self.request.get("finished").strip():
-                comment.finished = True
-            else:
-                comment.finished = False
-            comment.punctuation = int(self.request.get("star"))
+            if user.user_id() == comment.user:
+                # Se obtienen los campos del formulario y se pasan al formato correcto
+                comment.comment = self.request.get("comment").strip()
+                comment.numHours = int(self.request.get("hours").strip())
+                if "yes" == self.request.get("finished").strip():
+                    comment.finished = True
+                else:
+                    comment.finished = False
+                comment.punctuation = int(self.request.get("star"))
 
-            #Se actualiza
-            comment.put()
-            time.sleep(1)
+                #Se actualiza
+                comment.put()
+                time.sleep(1)
+            else:
+                self.redirect("/error?msg=You don't have premissions to do this")
+                return
 
             #Redireccion
             game = Game.query(comment.game == Game.key).get()

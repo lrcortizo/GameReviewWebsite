@@ -33,10 +33,13 @@ class RemoveCommentHandler(webapp2.RequestHandler):
             except:
                 self.redirect("/error?msg=Comment key was not found")
                 return
-
-            #El comentario se elimina
-            comment.key.delete()
-            time.sleep(1)
+            if user.user_id() == comment.user:
+                #El comentario se elimina
+                comment.key.delete()
+                time.sleep(1)
+            else:
+                self.redirect("/error?msg=You don't have premissions to do this")
+                return
 
             #Redireccion
             game = Game.query(comment.game == Game.key).get()

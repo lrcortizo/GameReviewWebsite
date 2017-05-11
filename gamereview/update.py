@@ -69,15 +69,19 @@ class UpdateHandler(webapp2.RequestHandler):
                 return
 
             # Se obtienen los campos del formulario
-            game.name = self.request.get("name").strip()
-            game.description = self.request.get("description").strip()
-            game.picture = self.request.get("picture").strip()
-            game.web = self.request.get("web").strip()
-            game.company = self.request.get("company").strip()
-
+            if user.user_id() == game.user:
+                game.name = self.request.get("name").strip()
+                game.description = self.request.get("description").strip()
+                game.picture = self.request.get("picture").strip()
+                game.web = self.request.get("web").strip()
+                game.company = self.request.get("company").strip()
             #Se modifica
-            game.put()
-            time.sleep(1)
+                game.put()
+                time.sleep(1)
+            else:
+                self.redirect("/error?msg=You don't have premissions to do this")
+                return
+
             self.redirect("/usergames")
         else:
             self.redirect("/")
