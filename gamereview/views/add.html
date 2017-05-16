@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="../css/style.css">
 		<title>Game Review</title>
 		<script type="text/javascript">
-				function hideError() {
+			function hideError() {
 				document.getElementById( "dvError" ).style.display = "none";
 			}
 
@@ -59,7 +59,7 @@
 			<p class="tittletext">Add Game</p>
 		</div>
 		<div id="dvError"></div>
-		<form class="gameform" onsubmit="javascript: return validate();" action="/add" method="post">
+		<form class="gameform" onsubmit="return validate();" action="/add" method="post">
 			Name: </br><input class="textinput" type="text" name="name" id="edName" size="80"/>
 			</br></br>
 			Description: </br><textarea type="textarea" name="description" id="edDescription" placeholder="Add description" cols="81" rows="10"></textarea>
@@ -72,8 +72,7 @@
 			</br><br>
 			<input type="image"
 				class="button"
-				title="add" alt="add" src="/img/add.svg"
-				onsubmit="javascript: document.gameform.submit()"/>
+				title="add" alt="add" src="/img/add.svg"/>
 		</form>
 	</body>
 </html>

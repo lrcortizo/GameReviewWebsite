@@ -70,23 +70,36 @@ class AddCommentHandler(webapp2.RequestHandler):
                 self.redirect("/error?msg=Game key doesn't exist")
                 return
 
-            #Se crea el comentario y se extraen los campos del formulario
-            comment = Comment()
-            comment.game = game.key
-            comment.user = user.user_id()
-            comment.nameUser = user.nickname()
-            comment.comment = self.request.get("comment").strip()
-            comment.numHours = int(self.request.get("hours").strip())
-            if "yes" == self.request.get("finished").strip():
-                comment.finished = True
+
+            #Comprobacion campos
+            if self.request.get("comment").strip() == "":
+                self.redirect("/error?msg=Comment field is empty")
+                return
+            elif self.request.get("finished").strip() != "yes" and self.request.get("finished").strip() != "no":
+                self.redirect("/error?msg=You must to indicate if game is finished or no")
+                return
             else:
-                comment.finished = False
+                try:
+                    #Se crea el comentario y se extraen los campos del formulario
+                    comment = Comment()
+                    comment.game = game.key
+                    comment.user = user.user_id()
+                    comment.nameUser = user.nickname()
+                    comment.comment = self.request.get("comment").strip()
+                    comment.numHours = int(self.request.get("hours").strip())
+                    if "yes" == self.request.get("finished").strip():
+                        comment.finished = True
+                    else:
+                        comment.finished = False
 
-            comment.punctuation = int(self.request.get("star"))
+                    comment.punctuation = int(self.request.get("star"))
 
-            #Se almacena el comentario
-            comment.put()
-            time.sleep(1)
+                    #Se almacena el comentario
+                    comment.put()
+                    time.sleep(1)
+                except:
+                    self.redirect("/error?msg=You must to indicate the punctuation and played hours")
+                    return
 
             self.redirect("/details?id="+game.key.urlsafe())
         else:
