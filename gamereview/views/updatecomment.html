@@ -54,8 +54,8 @@
 					showError( "ERROR: You must to introduce a punctuation" );
 					return false;
 				}
-
-				if(isNaN(edHours.value)){
+				var expr = /^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/;
+				if(expr.test(value)){
 				    showError( "Played hours must be a number" );
 					return false;
 				}
@@ -101,8 +101,8 @@
 			action="/updatecomment?id={{comment.key.urlsafe()}}" method="post">
 			Comment: </br><textarea type="textarea" name="comment" id="edComment" cols="81" rows="10">{{comment.comment}}</textarea>
 			</br></br>
-			Played hours: </br><input type="text" name="hours" id="edHours" size="80"
-					value="{{comment.numHours}}">
+			Played hours (must be a number): </br><input type="text" name="hours" id="edHours" size="80"
+				 onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="{{comment.numHours}}">
 			</br></br>
 			Game finished: </br>Yes<input type="radio" name="finished" value="yes"/>
 			No<input type="radio" name="finished" value="no"/>
