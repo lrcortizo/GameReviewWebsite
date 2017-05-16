@@ -23,7 +23,7 @@
 				var edComment = document.getElementById( "edComment" );
 				var edHours = document.getElementById( "edHours" );
 				var edPunctuation = document.getElementById( "edPunctuation" );
-				star = document.getElementsByName("star");
+				finished = document.getElementsByName("finished");
 
 				hideError();
 
@@ -36,8 +36,8 @@
 				}
 
 				if(!seleccionado) {
-					showError( "ERROR: You must to indicate if game is finished or no" );
-					return false;
+				    showError( "ERROR: You must to indicate if game is finished or no" );
+				    return false;
 				}
 
 				if ( edComment.value.trim().length == 0 ) {
@@ -54,14 +54,14 @@
 					showError( "ERROR: You must to introduce a punctuation" );
 					return false;
 				}
-
-				if(isNaN(edHours.value)){
-					showError( "Played hours must be a number" );
+				var expr = /^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/;
+				if(expr.test(value)){
+				    showError( "Played hours must be a number" );
 					return false;
 				}
 
 				if(isNaN(edPunctuation.value)){
-					showError( "Punctuation must be a number" );
+				    showError( "Punctuation must be a number" );
 					return false;
 				}
 
@@ -85,6 +85,7 @@
 					showError( "ERROR: You must to indicate the punctuation" );
 					return false;
 				}
+
 				return true;
 			}
 		</script>
@@ -118,7 +119,11 @@
 				<label class="star star-5" for="star-5"></label>
 			</div>
 			</br></br></br></br>
-			<input type="submit" class="buttontext" value="Add comment"/>
+			<input type="image"
+					class="button"
+					title="add" alt="add"
+					width="16px" height="16px" src="/img/add.svg"
+					onsubmit="javascript: document.gameform.submit()"/>
 			</br></br>
 		</form>
 	</body>
