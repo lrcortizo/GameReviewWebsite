@@ -15,11 +15,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="updatecomment.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="updatecomment.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/updatecomment.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="57" column="23" lean-forward="false" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+            <state relative-caret-position="136">
+              <caret line="104" column="81" lean-forward="false" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="81" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addcomment.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/addcomment.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="101" column="21" lean-forward="false" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -93,11 +103,11 @@
         <option value="$PROJECT_DIR$/removecomment.py" />
         <option value="$PROJECT_DIR$/remove.py" />
         <option value="$PROJECT_DIR$/views/add.html" />
-        <option value="$PROJECT_DIR$/views/addcomment.html" />
         <option value="$PROJECT_DIR$/addcomment.py" />
         <option value="$PROJECT_DIR$/updatecomment.py" />
         <option value="$PROJECT_DIR$/views/details.html" />
         <option value="$PROJECT_DIR$/views/updatecomment.html" />
+        <option value="$PROJECT_DIR$/views/addcomment.html" />
       </list>
     </option>
   </component>
@@ -749,13 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/addcomment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="108" column="33" lean-forward="false" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/usergames.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -774,8 +777,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/updatecomment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="57" column="23" lean-forward="false" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+        <state relative-caret-position="136">
+          <caret line="104" column="81" lean-forward="false" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/addcomment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="101" column="21" lean-forward="false" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
           <folding />
         </state>
       </provider>

@@ -98,7 +98,8 @@
 		<form class="gameform" onsubmit="return validate();" action="/addcomment?id={{game.key.urlsafe()}}" method="post">
 			Comment: </br><textarea type="textarea" name="comment" id="edComment" cols="81" rows="10" placeholder="Add comment"></textarea>
 			</br></br>
-			Played hours (must be a number): </br><input type="text" name="hours" id="edHours" size="3">
+			Played hours (must be a number): </br><input type="text" name="hours" id="edHours" size="3"
+					 onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 			</br></br>
 			Game finished: </br>Yes<input type="radio" name="finished" value="yes">
 			No<input type="radio" name="finished" value="no">
