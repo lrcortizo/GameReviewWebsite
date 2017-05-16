@@ -71,17 +71,28 @@ class UpdateCommentHandler(webapp2.RequestHandler):
 
             if user.user_id() == comment.user:
                 # Se obtienen los campos del formulario y se pasan al formato correcto
-                comment.comment = self.request.get("comment").strip()
-                comment.numHours = int(self.request.get("hours").strip())
-                if "yes" == self.request.get("finished").strip():
-                    comment.finished = True
+                if self.request.get("comment").strip() == "":
+                    self.redirect("/error?msg=Comment field is empty")
+                    return
+                elif self.request.get("finished").strip() != "yes" and self.request.get("finished").strip() != "no":
+                    self.redirect("/error?msg=You must to indicate if game is finished or no")
+                    return
                 else:
-                    comment.finished = False
-                comment.punctuation = int(self.request.get("star"))
+                    try:
+                        comment.comment = self.request.get("comment").strip()
+                        comment.numHours = int(self.request.get("hours").strip())
+                        if "yes" == self.request.get("finished").strip():
+                            comment.finished = True
+                        else:
+                            comment.finished = False
+                        comment.punctuation = int(self.request.get("star"))
 
-                #Se actualiza
-                comment.put()
-                time.sleep(1)
+                        #Se actualiza
+                        comment.put()
+                        time.sleep(1)
+                    except:
+                        self.redirect("/error?msg=You must to indicate the punctuation and played hours")
+                        return
             else:
                 self.redirect("/error?msg=You don't have premissions to do this")
                 return
