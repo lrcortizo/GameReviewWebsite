@@ -1,6 +1,6 @@
 # Game Review Website
 
-Web application for game comments.
+Web application for game comments using Python 3, Jinja 2 and Google App Engine.
 
 - There are different users in the application. Any user can register a game if it not exist, or modify it. A game has the follow attributes: name, publication date, company, description, web and picture.
 
