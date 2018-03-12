@@ -1,7 +1,7 @@
-# PracticaALS
+# Game Review Website
 
-### Se trata de una aplicación web de comentarios de juegos.
+Web application for game comments.
 
-### - En la aplicación existen distintos usuarios. Cualquier usuario puede dar de alta un juego si no existe ya, o modificarlo. Por cada juego  se guardará un nombre, la fecha de publicación, compañía, una descripción del mismo, web, y foto.
+- There are different users in the application. Any user can register a game if it not exist, or modify it. A game has the follow attributes: name, publication date, company, description, web and picture.
 
-### - Cada usuario puede dar de alta juegos a los que haya jugado si no existen ya. Por cada comentario se guarda el juego, el número de horas, si se lo ha terminado o no, un comentario y una valoración ("estrellas" de 0 a 5) de forma que solo ese usuario puede modificar su comentario.
+- Each user can post comments and rate games. Comments have the follow attrbites: number of hours played, if it has been finished or not, text of comment and an assessment ("stars" from 0 to 5) so that only that user can modify his comment.
